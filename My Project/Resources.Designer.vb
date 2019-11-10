@@ -39,7 +39,7 @@ Namespace My.Resources
         Friend ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
-                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("RiseThyColony_Launcher.Resources", GetType(Resources).Assembly)
+                    Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("RiseThyColony_Installer.Resources", GetType(Resources).Assembly)
                     resourceMan = temp
                 End If
                 Return resourceMan
@@ -66,6 +66,26 @@ Namespace My.Resources
         Friend ReadOnly Property _2019_11_06_14_08_39() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("2019-11-06_14.08.39", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property nether_brick() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("nether_brick", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property planks_big_oak() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("planks_big_oak", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

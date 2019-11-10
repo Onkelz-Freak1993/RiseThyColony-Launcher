@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CE53A8BD-301B-439A-ACAB-42DBB1E9AFB1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>RiseThyColony_Launcher.My.MyApplication</StartupObject>
-    <RootNamespace>RiseThyColony_Launcher</RootNamespace>
-    <AssemblyName>RiseThyColony Launcher</AssemblyName>
+    <StartupObject>RiseThyColony_Installer.My.MyApplication</StartupObject>
+    <RootNamespace>RiseThyColony_Installer</RootNamespace>
+    <AssemblyName>RiseThyColony Installer</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -22,7 +22,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>RiseThyColony Launcher.xml</DocumentationFile>
+    <DocumentationFile>RiseThyColony Installer.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -32,7 +32,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>RiseThyColony Launcher.xml</DocumentationFile>
+    <DocumentationFile>RiseThyColony Installer.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -46,6 +46,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -124,6 +127,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\planks_spruce.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nether_brick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planks_big_oak.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Shell32">
+      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
