@@ -4,7 +4,6 @@ Imports System.Net
 Imports System.IO
 Imports System.IO.Compression
 
-
 Public Class Form1
     Dim isInstalling = False
     Dim TargetPath As String
@@ -90,7 +89,7 @@ Public Class Form1
         End If
     End Sub
 
-    Function downloadModpack()
+    Async Function downloadModpack() As Task
         AddHandler Wc.DownloadProgressChanged, AddressOf Wc_DownloadProgressChanged
         AddHandler Wc.DownloadFileCompleted, AddressOf Wc_DownloadFileCompleted
         If System.IO.File.Exists(My.Settings.installpath & "\GSMPNM.zip") Then
@@ -99,11 +98,10 @@ Public Class Form1
         TargetPath = My.Settings.installpath & "\GSMPNM.zip"
         Wc.DownloadFileAsync(New Uri("https://www.gingolingoo.de/files/GSMPNM.zip"), TargetPath)
         playbtn.Enabled = False
-        Return isInstalling = True
+        isInstalling = True
     End Function
-    Function downloadMusic()
+    Async Function downloadMusic() As Task
         Timer1.Start()
-        Return True
     End Function
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -144,20 +142,26 @@ Public Class Form1
             Dim output As Shell32.Folder = sc.NameSpace(My.Settings.installpath)
             Dim input As Shell32.Folder = sc.NameSpace(My.Settings.installpath & "\GSMPNM.zip")
             output.CopyHere(input.Items, 4)
+
         End If
     End Sub
 
     Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
         If Stage = 2 Then
+            Try
+                If Not System.IO.File.Exists(My.Settings.installpath & "\GSMPJM.zip") Then
+                    'keine Musik da zum Entpacken
+                End If
+            Catch
+                'Erneut versuchen
+            End Try
+        Else
             Timer3.Stop()
-            If Not System.IO.File.Exists(My.Settings.installpath & "\GSMPJM.zip") Then
-                'keine Musik da zum Entpacken
-            Else
-                Dim sc As New Shell32.Shell()
-                Dim output As Shell32.Folder = sc.NameSpace(My.Settings.installpath)
-                Dim input As Shell32.Folder = sc.NameSpace(My.Settings.installpath & "\GSMPJM.zip")
-                output.CopyHere(input.Items, 4)
-            End If
+            Dim sc As New Shell32.Shell()
+            Dim output As Shell32.Folder = sc.NameSpace(My.Settings.installpath)
+            Dim input As Shell32.Folder = sc.NameSpace(My.Settings.installpath & "\GSMPJM.zip")
+            output.CopyHere(input.Items, 4)
+
         End If
     End Sub
 End Class

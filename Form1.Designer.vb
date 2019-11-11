@@ -127,13 +127,16 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Button2.BackColor = System.Drawing.Color.Black
+        Me.Button2.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources.planks_spruce
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Button2.ForeColor = System.Drawing.Color.White
         Me.Button2.Location = New System.Drawing.Point(526, 265)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(103, 23)
         Me.Button2.TabIndex = 10
         Me.Button2.Text = "Durchsuchen..."
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'progress
         '
