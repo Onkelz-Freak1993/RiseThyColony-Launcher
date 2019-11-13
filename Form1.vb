@@ -17,12 +17,13 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'My.Settings.installpath = ""
+        installpathtxt.Text = My.Settings.installpath
         versionlbl.Text = My.Application.Info.Version.ToString
     End Sub
 
     Private Sub playbtn_Click(sender As Object, e As EventArgs) Handles playbtn.Click
         Dim Response As String
+        playbtn.Image = Nothing
         Try
             If My.Settings.installpath = "" Then
                 Response = MsgBox("Es wurde noch kein Installationspfad gesetzt. Soll der Standard Minecraftpfad verwendet werden?", vbYesNoCancel, "Installationspfad")
@@ -41,7 +42,6 @@ Public Class Form1
 
         End Try
         My.Settings.Save()
-
         downloadModpack()
         downloadMusic()
         extractModpack()
@@ -53,6 +53,7 @@ Public Class Form1
         isInstalling = False
         playbtn.Enabled = True
         playbtn.Text = "Installieren"
+        playbtn.Image = My.Resources.book_writable
     End Sub
     Private Sub Wc_DownloadProgressChanged(ByVal sender As Object, ByVal e As System.Net.DownloadProgressChangedEventArgs) Handles Wc.DownloadProgressChanged
         progress.Value = e.ProgressPercentage
@@ -142,7 +143,6 @@ Public Class Form1
             Dim output As Shell32.Folder = sc.NameSpace(My.Settings.installpath)
             Dim input As Shell32.Folder = sc.NameSpace(My.Settings.installpath & "\GSMPNM.zip")
             output.CopyHere(input.Items, 4)
-
         End If
     End Sub
 
@@ -157,11 +157,10 @@ Public Class Form1
             End Try
         Else
             Timer3.Stop()
-            Dim sc As New Shell32.Shell()
-            Dim output As Shell32.Folder = sc.NameSpace(My.Settings.installpath)
-            Dim input As Shell32.Folder = sc.NameSpace(My.Settings.installpath & "\GSMPJM.zip")
-            output.CopyHere(input.Items, 4)
-
+            'Dim sc As New Shell32.Shell()
+            'Dim output As Shell32.Folder = sc.NameSpace(My.Settings.installpath)
+            'Dim input As Shell32.Folder = sc.NameSpace(My.Settings.installpath & "\GSMPJM.zip")
+            'output.CopyHere(input.Items, 4)
         End If
     End Sub
 End Class

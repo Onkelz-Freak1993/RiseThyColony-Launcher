@@ -62,9 +62,12 @@ Partial Class Form1
         Me.playbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.playbtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.playbtn.ForeColor = System.Drawing.Color.White
-        Me.playbtn.Location = New System.Drawing.Point(215, 383)
+        Me.playbtn.Image = Global.RiseThyColony_Installer.My.Resources.Resources.book_writable
+        Me.playbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.playbtn.Location = New System.Drawing.Point(213, 384)
         Me.playbtn.Name = "playbtn"
-        Me.playbtn.Size = New System.Drawing.Size(211, 54)
+        Me.playbtn.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
+        Me.playbtn.Size = New System.Drawing.Size(215, 54)
         Me.playbtn.TabIndex = 1
         Me.playbtn.Text = "Installieren"
         Me.playbtn.UseVisualStyleBackColor = False
