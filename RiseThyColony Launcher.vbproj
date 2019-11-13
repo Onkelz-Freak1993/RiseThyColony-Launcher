@@ -154,6 +154,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\record_13.png" />
+    <None Include="Resources\feather.png" />
+    <None Include="Resources\iron_ingot.png" />
+    <None Include="Resources\dye_powder_brown.png" />
+    <None Include="Resources\download.png" />
+    <None Include="Resources\fhMDH9o6_400x400.jpg" />
+    <None Include="Resources\trcorner.png" />
+    <None Include="Resources\topbar.png" />
+    <None Include="Resources\tlcorner.png" />
+    <None Include="Resources\rightbar.png" />
+    <None Include="Resources\leftbar.png" />
+    <None Include="Resources\brcorner.png" />
+    <None Include="Resources\bottombar.png" />
+    <None Include="Resources\blcorner.png" />
+    <None Include="Resources\bgpanel.png" />
     <None Include="Resources\book_writable.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
