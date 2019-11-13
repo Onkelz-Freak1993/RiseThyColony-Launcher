@@ -1,15 +1,19 @@
 ﻿Imports System.ComponentModel
 Imports System.Environment
 Imports System.Net
-Imports System.IO
-Imports System.IO.Compression
+'Imports System.IO 
+'Imports System.IO.Compression
 
 Public Class Form1
     Dim isInstalling = False
     Dim TargetPath As String
     Dim Stage As Integer = 0
+    Dim speed As Integer
+    Dim length As Long
+    Dim sw As New Stopwatch
 
     Public WithEvents Wc As New WebClient
+    Public WithEvents Wc2 As New WebClient
     Dim appData As String = GetFolderPath(SpecialFolder.ApplicationData)
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
@@ -26,7 +30,7 @@ Public Class Form1
         playbtn.Image = Nothing
         Try
             If My.Settings.installpath = "" Then
-                Response = MsgBox("Es wurde noch kein Installationspfad gesetzt. Soll der Standard Minecraftpfad verwendet werden?", vbYesNoCancel, "Installationspfad")
+                Response = MsgBox("Es wurde noch kein Installationspfad gesetzt. Soll der Standard Minecraftpfad verwendet werden?", vbYesNoCancel, "Installationspfad nicht angegeben")
                 If Response = vbYes Then
                     My.Settings.installpath = appData & "\.minecraft"
                 ElseIf Response = vbNo Then
@@ -43,9 +47,8 @@ Public Class Form1
         End Try
         My.Settings.Save()
         downloadModpack()
-        downloadMusic()
-        extractModpack()
-        extractMusic()
+        'extractModpack()
+        'extractMusic()
     End Sub
 
     Private Sub Wc_DownloadFileCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.AsyncCompletedEventArgs) Handles Wc.DownloadFileCompleted
@@ -54,9 +57,35 @@ Public Class Form1
         playbtn.Enabled = True
         playbtn.Text = "Installieren"
         playbtn.Image = My.Resources.book_writable
+        downloadMusic()
     End Sub
     Private Sub Wc_DownloadProgressChanged(ByVal sender As Object, ByVal e As System.Net.DownloadProgressChangedEventArgs) Handles Wc.DownloadProgressChanged
         progress.Value = e.ProgressPercentage
+        Dim info As New IO.FileInfo(TargetPath)
+        length = (info.Length) / 100
+        speed = length / sw.Elapsed.Seconds
+        If speed = 0 Then
+            'workaround for arithmetic error
+        End If
+        progresslbl.Text = Math.Round(e.BytesReceived / 1024 / 1024, 1) & "MB von " & Math.Round(e.TotalBytesToReceive / 1024 / 1024, 1) & "MB - " & speed & "kb/s" & e.ProgressPercentage & "%"
+        playbtn.Text = "Lade herunter... " & e.ProgressPercentage & "%"
+        filenamelbl.Text = TargetPath
+    End Sub
+
+    Private Sub Wc2_DownloadFileCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.AsyncCompletedEventArgs) Handles Wc2.DownloadFileCompleted
+        System.Media.SystemSounds.Asterisk.Play()
+        isInstalling = False
+        playbtn.Enabled = True
+        playbtn.Text = "Installieren"
+        playbtn.Image = My.Resources.book_writable
+    End Sub
+    Private Sub Wc2_DownloadProgressChanged(ByVal sender As Object, ByVal e As System.Net.DownloadProgressChangedEventArgs) Handles Wc2.DownloadProgressChanged
+        progress.Value = e.ProgressPercentage
+        Dim info As New IO.FileInfo(TargetPath)
+        length = (info.Length) / 100
+        speed = length / sw.Elapsed.Seconds
+        progresslbl.Text = e.BytesReceived & " von " & e.TotalBytesToReceive & " - " & speed & "kb/s" & e.ProgressPercentage & "%"
+
         playbtn.Text = "Lade herunter... " & e.ProgressPercentage & "%"
         filenamelbl.Text = TargetPath
     End Sub
@@ -102,29 +131,29 @@ Public Class Form1
         isInstalling = True
     End Function
     Async Function downloadMusic() As Task
-        Timer1.Start()
+        Timer1.Stop()
+        Dim Response As String
+        Response = MsgBox("Soll die Ambientmusik heruntergeladen werden? Sie ist nicht notwendig, aber verbessert das Spielerlebnis erheblich." & vbNewLine & "Ungefähre Größe: 300 Megabyte", vbYesNo, "Musik installieren?")
+        If Response = vbYes Then
+            AddHandler Wc2.DownloadProgressChanged, AddressOf Wc2_DownloadProgressChanged
+            AddHandler Wc2.DownloadFileCompleted, AddressOf Wc2_DownloadFileCompleted
+            If System.IO.File.Exists(My.Settings.installpath & "\GSMPJM.zip") Then
+                My.Computer.FileSystem.DeleteFile(My.Settings.installpath & "\GSMPJM.zip")
+            End If
+            TargetPath = My.Settings.installpath & "\GSMPJM.zip"
+            Wc2.DownloadFileAsync(New Uri("https://www.gingolingoo.de/files/GSMPJM.zip"), TargetPath)
+            playbtn.Enabled = False
+            isInstalling = True
+            Stage = 2
+        ElseIf Response = vbNo Then
+            Stage = 1
+            'keine Musik :(
+        End If
     End Function
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If Not Wc.IsBusy Then
-            Timer1.Stop()
-            Dim Response As String
-            Response = MsgBox("Soll die Ambientmusik heruntergeladen werden? Sie ist nicht notwendig, aber verbessert das Spielerlebnis erheblich." & vbNewLine & "Ungefähre Größe: 300 Megabyte", vbYesNo, "Musik installieren?")
-            If Response = vbYes Then
-                AddHandler Wc.DownloadProgressChanged, AddressOf Wc_DownloadProgressChanged
-                AddHandler Wc.DownloadFileCompleted, AddressOf Wc_DownloadFileCompleted
-                If System.IO.File.Exists(My.Settings.installpath & "\GSMPJM.zip") Then
-                    My.Computer.FileSystem.DeleteFile(My.Settings.installpath & "\GSMPJM.zip")
-                End If
-                TargetPath = My.Settings.installpath & "\GSMPJM.zip"
-                Wc.DownloadFileAsync(New Uri("https://www.gingolingoo.de/files/GSMPJM.zip"), TargetPath)
-                playbtn.Enabled = False
-                isInstalling = True
-                Stage = 2
-            ElseIf Response = vbNo Then
-                Stage = 1
-                'keine Musik :(
-            End If
+
         End If
     End Sub
 

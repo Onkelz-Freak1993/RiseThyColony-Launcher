@@ -40,6 +40,7 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
+        Me.progresslbl = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -154,7 +155,7 @@ Partial Class Form1
         Me.filenamelbl.BackColor = System.Drawing.Color.Transparent
         Me.filenamelbl.Location = New System.Drawing.Point(15, 324)
         Me.filenamelbl.Name = "filenamelbl"
-        Me.filenamelbl.Size = New System.Drawing.Size(614, 23)
+        Me.filenamelbl.Size = New System.Drawing.Size(413, 23)
         Me.filenamelbl.TabIndex = 14
         Me.filenamelbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -194,12 +195,24 @@ Partial Class Form1
         'Timer3
         '
         '
+        'progresslbl
+        '
+        Me.progresslbl.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.progresslbl.BackColor = System.Drawing.Color.Transparent
+        Me.progresslbl.Location = New System.Drawing.Point(434, 324)
+        Me.progresslbl.Name = "progresslbl"
+        Me.progresslbl.Size = New System.Drawing.Size(195, 23)
+        Me.progresslbl.TabIndex = 18
+        Me.progresslbl.Text = "0 von 0 - 0%"
+        Me.progresslbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources.planks_big_oak
         Me.ClientSize = New System.Drawing.Size(641, 448)
+        Me.Controls.Add(Me.progresslbl)
         Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.filenamelbl)
@@ -241,4 +254,5 @@ Partial Class Form1
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Timer2 As Timer
     Friend WithEvents Timer3 As Timer
+    Friend WithEvents progresslbl As Label
 End Class
