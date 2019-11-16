@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.RiseThyColony_Installer.Form1
+            Me.MainForm = Global.RiseThyColony_Installer.MainWindow
         End Sub
     End Class
 End Namespace

@@ -121,12 +121,11 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''  Sucht eine lokalisierte Ressource vom Typ System.IO.UnmanagedMemoryStream ähnlich wie System.IO.MemoryStream.
         '''</summary>
-        Friend ReadOnly Property download() As System.Drawing.Bitmap
+        Friend ReadOnly Property ding() As System.IO.UnmanagedMemoryStream
             Get
-                Dim obj As Object = ResourceManager.GetObject("download", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
+                Return ResourceManager.GetStream("ding", resourceCulture)
             End Get
         End Property
         
@@ -146,16 +145,6 @@ Namespace My.Resources
         Friend ReadOnly Property feather() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("feather", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property fhMDH9o6_400x400() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("fhMDH9o6_400x400", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

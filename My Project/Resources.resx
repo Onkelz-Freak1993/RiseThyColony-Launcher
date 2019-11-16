@@ -139,9 +139,6 @@
   <data name="planks_big_oak" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planks_big_oak.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fhMDH9o6_400x400" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fhMDH9o6_400x400.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="blcorner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blcorner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -172,10 +169,10 @@
   <data name="iron_ingot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iron_ingot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="download" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\download.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="record_13" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\record_13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ding" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ding.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

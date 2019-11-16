@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class MainWindow
     Inherits System.Windows.Forms.Form
 
     'Das Formular überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,10 +20,9 @@ Partial Class Form1
     'Hinweis: Die folgende Prozedur ist für den Windows Form-Designer erforderlich.
     'Das Bearbeiten ist mit dem Windows Form-Designer möglich.  
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainWindow))
         Me.playbtn = New System.Windows.Forms.Button()
         Me.versionlbl = New System.Windows.Forms.Label()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
@@ -33,9 +32,6 @@ Partial Class Form1
         Me.installpathbtn = New System.Windows.Forms.Button()
         Me.progress = New System.Windows.Forms.ProgressBar()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
-        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.progresslbl = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
@@ -85,14 +81,13 @@ Partial Class Form1
         'versionlbl
         '
         Me.versionlbl.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.versionlbl.AutoSize = True
         Me.versionlbl.BackColor = System.Drawing.Color.Transparent
-        Me.versionlbl.Location = New System.Drawing.Point(595, 14)
+        Me.versionlbl.Location = New System.Drawing.Point(440, 14)
         Me.versionlbl.Name = "versionlbl"
-        Me.versionlbl.Size = New System.Drawing.Size(44, 13)
+        Me.versionlbl.Size = New System.Drawing.Size(198, 13)
         Me.versionlbl.TabIndex = 3
         Me.versionlbl.Text = "#.#.#.#"
-        Me.versionlbl.TextAlign = System.Drawing.ContentAlignment.BottomRight
+        Me.versionlbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LinkLabel1
         '
@@ -163,15 +158,6 @@ Partial Class Form1
         '
         Me.FolderBrowserDialog1.Description = "Wähle den Installationsordner für RiseThyColony aus oder lege ihn an:"
         Me.FolderBrowserDialog1.RootFolder = System.Environment.SpecialFolder.ApplicationData
-        '
-        'Timer1
-        '
-        '
-        'Timer2
-        '
-        '
-        'Timer3
-        '
         '
         'progresslbl
         '
@@ -336,7 +322,7 @@ Partial Class Form1
         Me.filenamelbl.TabIndex = 30
         Me.filenamelbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'Form1
+        'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -362,7 +348,7 @@ Partial Class Form1
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "Form1"
+        Me.Name = "MainWindow"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "RiseThyColony Installer"
         Me.Panel1.ResumeLayout(False)
@@ -391,9 +377,6 @@ Partial Class Form1
     Friend WithEvents installpathbtn As Button
     Friend WithEvents progress As ProgressBar
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
-    Friend WithEvents Timer1 As Timer
-    Friend WithEvents Timer2 As Timer
-    Friend WithEvents Timer3 As Timer
     Friend WithEvents progresslbl As Label
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents PictureBox3 As PictureBox
