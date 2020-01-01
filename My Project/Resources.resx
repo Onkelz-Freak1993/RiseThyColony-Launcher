@@ -118,17 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="blcorner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blcorner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="tlcorner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tlcorner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ding" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ding.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="trcorner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\trcorner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="book_writable" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\book_writable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Symphonia_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Symphonia_logo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="2019-12-31_14.57.20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2019-12-31_14.57.20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="feather" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\feather.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="record_13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\record_13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rightbar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rightbar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,8 +151,8 @@
   <data name="planks_big_oak" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planks_big_oak.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="blcorner" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\blcorner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bottombar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bottombar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="brcorner" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\brcorner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,14 +163,14 @@
   <data name="planks_spruce" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planks_spruce.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bottombar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bottombar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="nether_brick" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nether_brick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dye_powder_brown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dye_powder_brown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-console-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-console-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgpanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bgpanel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,13 +178,16 @@
   <data name="topbar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\topbar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gnome_media_floppy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gnome_media_floppy.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iron_ingot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iron_ingot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="record_13" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\record_13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="book_writable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\book_writable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ding" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ding.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

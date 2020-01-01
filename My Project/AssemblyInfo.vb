@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Werte der Assemblyattribute überprüfen
 
-<Assembly: AssemblyTitle("RiseThyColony Installer")>
+<Assembly: AssemblyTitle("Symphonia Installer")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("RiseThyColony Installer")>
-<Assembly: AssemblyCopyright("Copyright © Onkelz-Freak1993  2019")>
+<Assembly: AssemblyProduct("Symphonia Installer")>
+<Assembly: AssemblyCopyright("Copyright ©2019 Onkelz-Freak1993")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' indem Sie "*" wie unten gezeigt eingeben:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.1.0.0")>
-<Assembly: AssemblyFileVersion("1.1.0.0")>
+<Assembly: AssemblyVersion("2019.12.31.0")>
+<Assembly: AssemblyFileVersion("2019.12.31.0")>

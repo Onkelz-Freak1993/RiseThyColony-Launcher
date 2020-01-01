@@ -42,12 +42,14 @@ Partial Class MainWindow
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PictureBox9 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.optionsstrip = New System.Windows.Forms.ToolStrip()
         Me.javachkbtn = New System.Windows.Forms.ToolStripButton()
         Me.forgechkbtn = New System.Windows.Forms.ToolStripButton()
         Me.musicchkbtn = New System.Windows.Forms.ToolStripButton()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.filenamelbl = New System.Windows.Forms.LinkLabel()
+        Me.consolebtn = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -68,7 +70,7 @@ Partial Class MainWindow
         Me.playbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.playbtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.playbtn.ForeColor = System.Drawing.Color.White
-        Me.playbtn.Image = Global.RiseThyColony_Installer.My.Resources.Resources.book_writable
+        Me.playbtn.Image = Global.Symphonia_Installer.My.Resources.Resources.book_writable
         Me.playbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.playbtn.Location = New System.Drawing.Point(207, 384)
         Me.playbtn.Name = "playbtn"
@@ -106,7 +108,7 @@ Partial Class MainWindow
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
-        Me.Panel1.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources.nether_brick
+        Me.Panel1.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.nether_brick
         Me.Panel1.Controls.Add(Me.LinkLabel1)
         Me.Panel1.Controls.Add(Me.versionlbl)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -136,7 +138,7 @@ Partial Class MainWindow
         'installpathbtn
         '
         Me.installpathbtn.BackColor = System.Drawing.Color.Black
-        Me.installpathbtn.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources.planks_spruce
+        Me.installpathbtn.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.planks_spruce
         Me.installpathbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.installpathbtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.installpathbtn.ForeColor = System.Drawing.Color.White
@@ -173,7 +175,7 @@ Partial Class MainWindow
         'PictureBox2
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox2.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources.tlcorner
+        Me.PictureBox2.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.tlcorner
         Me.PictureBox2.Location = New System.Drawing.Point(-1, 241)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(13, 13)
@@ -183,7 +185,7 @@ Partial Class MainWindow
         'PictureBox3
         '
         Me.PictureBox3.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox3.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources.trcorner
+        Me.PictureBox3.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.trcorner
         Me.PictureBox3.Location = New System.Drawing.Point(629, 241)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(13, 13)
@@ -193,7 +195,7 @@ Partial Class MainWindow
         'PictureBox4
         '
         Me.PictureBox4.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox4.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources.blcorner
+        Me.PictureBox4.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.blcorner
         Me.PictureBox4.Location = New System.Drawing.Point(-1, 410)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(13, 13)
@@ -203,7 +205,7 @@ Partial Class MainWindow
         'PictureBox5
         '
         Me.PictureBox5.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox5.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources.brcorner
+        Me.PictureBox5.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.brcorner
         Me.PictureBox5.Location = New System.Drawing.Point(629, 410)
         Me.PictureBox5.Name = "PictureBox5"
         Me.PictureBox5.Size = New System.Drawing.Size(13, 13)
@@ -213,7 +215,7 @@ Partial Class MainWindow
         'PictureBox6
         '
         Me.PictureBox6.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox6.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources.topbar
+        Me.PictureBox6.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.topbar
         Me.PictureBox6.Location = New System.Drawing.Point(11, 241)
         Me.PictureBox6.Name = "PictureBox6"
         Me.PictureBox6.Size = New System.Drawing.Size(619, 13)
@@ -223,7 +225,7 @@ Partial Class MainWindow
         'PictureBox7
         '
         Me.PictureBox7.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox7.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources.bottombar
+        Me.PictureBox7.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.bottombar
         Me.PictureBox7.Location = New System.Drawing.Point(11, 410)
         Me.PictureBox7.Name = "PictureBox7"
         Me.PictureBox7.Size = New System.Drawing.Size(619, 13)
@@ -233,7 +235,7 @@ Partial Class MainWindow
         'PictureBox8
         '
         Me.PictureBox8.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox8.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources.leftbar
+        Me.PictureBox8.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.leftbar
         Me.PictureBox8.Location = New System.Drawing.Point(-1, 253)
         Me.PictureBox8.Name = "PictureBox8"
         Me.PictureBox8.Size = New System.Drawing.Size(13, 157)
@@ -243,7 +245,7 @@ Partial Class MainWindow
         'PictureBox9
         '
         Me.PictureBox9.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox9.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources.rightbar
+        Me.PictureBox9.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.rightbar
         Me.PictureBox9.Location = New System.Drawing.Point(629, 253)
         Me.PictureBox9.Name = "PictureBox9"
         Me.PictureBox9.Size = New System.Drawing.Size(13, 157)
@@ -253,8 +255,9 @@ Partial Class MainWindow
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.Transparent
-        Me.Panel2.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources._2019_11_06_14_08_39
+        Me.Panel2.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources._2019_12_31_14_57_20
         Me.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel2.Controls.Add(Me.Panel4)
         Me.Panel2.Controls.Add(Me.PictureBox2)
         Me.Panel2.Controls.Add(Me.PictureBox6)
         Me.Panel2.Controls.Add(Me.PictureBox3)
@@ -263,6 +266,15 @@ Partial Class MainWindow
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(641, 254)
         Me.Panel2.TabIndex = 27
+        '
+        'Panel4
+        '
+        Me.Panel4.BackgroundImage = CType(resources.GetObject("Panel4.BackgroundImage"), System.Drawing.Image)
+        Me.Panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Panel4.Location = New System.Drawing.Point(11, 12)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(619, 223)
+        Me.Panel4.TabIndex = 24
         '
         'optionsstrip
         '
@@ -282,7 +294,7 @@ Partial Class MainWindow
         '
         'javachkbtn
         '
-        Me.javachkbtn.Image = Global.RiseThyColony_Installer.My.Resources.Resources.dye_powder_brown
+        Me.javachkbtn.Image = Global.Symphonia_Installer.My.Resources.Resources.dye_powder_brown
         Me.javachkbtn.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.javachkbtn.Name = "javachkbtn"
         Me.javachkbtn.Size = New System.Drawing.Size(146, 36)
@@ -290,7 +302,7 @@ Partial Class MainWindow
         '
         'forgechkbtn
         '
-        Me.forgechkbtn.Image = Global.RiseThyColony_Installer.My.Resources.Resources.iron_ingot
+        Me.forgechkbtn.Image = Global.Symphonia_Installer.My.Resources.Resources.iron_ingot
         Me.forgechkbtn.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.forgechkbtn.Name = "forgechkbtn"
         Me.forgechkbtn.Size = New System.Drawing.Size(133, 36)
@@ -298,7 +310,7 @@ Partial Class MainWindow
         '
         'musicchkbtn
         '
-        Me.musicchkbtn.Image = Global.RiseThyColony_Installer.My.Resources.Resources.record_13
+        Me.musicchkbtn.Image = Global.Symphonia_Installer.My.Resources.Resources.record_13
         Me.musicchkbtn.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.musicchkbtn.Name = "musicchkbtn"
         Me.musicchkbtn.Size = New System.Drawing.Size(135, 36)
@@ -322,12 +334,31 @@ Partial Class MainWindow
         Me.filenamelbl.TabIndex = 30
         Me.filenamelbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'consolebtn
+        '
+        Me.consolebtn.BackColor = System.Drawing.Color.Black
+        Me.consolebtn.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.planks_spruce
+        Me.consolebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.consolebtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.consolebtn.ForeColor = System.Drawing.Color.White
+        Me.consolebtn.Image = Global.Symphonia_Installer.My.Resources.Resources.icons8_console_16
+        Me.consolebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.consolebtn.Location = New System.Drawing.Point(22, 381)
+        Me.consolebtn.Name = "consolebtn"
+        Me.consolebtn.Size = New System.Drawing.Size(74, 23)
+        Me.consolebtn.TabIndex = 31
+        Me.consolebtn.Text = "Konsole"
+        Me.consolebtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.consolebtn.UseVisualStyleBackColor = False
+        Me.consolebtn.Visible = False
+        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.RiseThyColony_Installer.My.Resources.Resources.bgpanel
+        Me.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.bgpanel
         Me.ClientSize = New System.Drawing.Size(641, 448)
+        Me.Controls.Add(Me.consolebtn)
         Me.Controls.Add(Me.filenamelbl)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.progresslbl)
@@ -350,7 +381,7 @@ Partial Class MainWindow
         Me.MaximizeBox = False
         Me.Name = "MainWindow"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "RiseThyColony Installer"
+        Me.Text = "Symphonia Installer"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -393,4 +424,6 @@ Partial Class MainWindow
     Friend WithEvents Panel3 As Panel
     Friend WithEvents filenamelbl As LinkLabel
     Friend WithEvents musicchkbtn As ToolStripButton
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents consolebtn As Button
 End Class

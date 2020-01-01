@@ -77,6 +77,18 @@ Namespace My
                 Me("ambiencemusic") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property SHA1() As String
+            Get
+                Return CType(Me("SHA1"),String)
+            End Get
+            Set
+                Me("SHA1") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
@@ -88,9 +100,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.RiseThyColony_Installer.My.MySettings
+        Friend ReadOnly Property Settings() As Global.Symphonia_Installer.My.MySettings
             Get
-                Return Global.RiseThyColony_Installer.My.MySettings.Default
+                Return Global.Symphonia_Installer.My.MySettings.Default
             End Get
         End Property
     End Module
