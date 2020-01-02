@@ -43,7 +43,7 @@ Partial Class console
         Me.debuglbl.Name = "debuglbl"
         Me.debuglbl.ReadOnly = True
         Me.debuglbl.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.debuglbl.Size = New System.Drawing.Size(800, 426)
+        Me.debuglbl.Size = New System.Drawing.Size(904, 487)
         Me.debuglbl.TabIndex = 1
         Me.debuglbl.Text = ""
         Me.debuglbl.ZoomFactor = 1.3!
@@ -54,7 +54,7 @@ Partial Class console
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(800, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(904, 24)
         Me.MenuStrip1.TabIndex = 2
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -78,7 +78,7 @@ Partial Class console
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(904, 511)
         Me.Controls.Add(Me.debuglbl)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)

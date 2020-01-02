@@ -276,6 +276,16 @@ Public Class MainWindow
                         Directory.Delete(My.Settings.installpath & "\config\", True)
                     End If
 
+                    If Not Directory.Exists(My.Settings.installpath & "\resources\") Then
+
+                        console.debuglbl.AppendText("Folder 'resources' does not exist, moving on..." & vbNewLine)
+                        'Ordner gibts nicht
+                    Else
+                        playbtn.Text = "Lösche Resourcen... "
+                        console.debuglbl.AppendText("Deleting Folder 'resources'..." & vbNewLine)
+                        Directory.Delete(My.Settings.installpath & "\resources\", True)
+                    End If
+
                     If Not File.Exists(My.Settings.installpath & "\options.txt") Then
                         console.debuglbl.AppendText("File 'options.txt' does not exist, moving on..." & vbNewLine)
                         'Datei gibts nicht
