@@ -22,6 +22,7 @@ Partial Class MainWindow
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainWindow))
         Me.playbtn = New System.Windows.Forms.Button()
         Me.versionlbl = New System.Windows.Forms.Label()
@@ -50,6 +51,13 @@ Partial Class MainWindow
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.filenamelbl = New System.Windows.Forms.LinkLabel()
         Me.consolebtn = New System.Windows.Forms.Button()
+        Me.trayicon = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.showtsmenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.closetsmenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.dividertsmenu = New System.Windows.Forms.ToolStripSeparator()
+        Me.consoletsmenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.repairbtn = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,6 +69,7 @@ Partial Class MainWindow
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.optionsstrip.SuspendLayout()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'playbtn
@@ -352,12 +361,69 @@ Partial Class MainWindow
         Me.consolebtn.UseVisualStyleBackColor = False
         Me.consolebtn.Visible = False
         '
+        'trayicon
+        '
+        Me.trayicon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info
+        Me.trayicon.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.trayicon.Icon = CType(resources.GetObject("trayicon.Icon"), System.Drawing.Icon)
+        Me.trayicon.Text = "Symphonia Installer"
+        Me.trayicon.Visible = True
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.showtsmenu, Me.consoletsmenu, Me.dividertsmenu, Me.closetsmenu})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(174, 76)
+        '
+        'showtsmenu
+        '
+        Me.showtsmenu.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.showtsmenu.Name = "showtsmenu"
+        Me.showtsmenu.Size = New System.Drawing.Size(173, 22)
+        Me.showtsmenu.Text = "Programm zeigen"
+        Me.showtsmenu.Visible = False
+        '
+        'closetsmenu
+        '
+        Me.closetsmenu.Name = "closetsmenu"
+        Me.closetsmenu.Size = New System.Drawing.Size(173, 22)
+        Me.closetsmenu.Text = "Beenden"
+        '
+        'dividertsmenu
+        '
+        Me.dividertsmenu.Name = "dividertsmenu"
+        Me.dividertsmenu.Size = New System.Drawing.Size(170, 6)
+        Me.dividertsmenu.Visible = False
+        '
+        'consoletsmenu
+        '
+        Me.consoletsmenu.Image = Global.Symphonia_Installer.My.Resources.Resources.icons8_console_16
+        Me.consoletsmenu.Name = "consoletsmenu"
+        Me.consoletsmenu.Size = New System.Drawing.Size(173, 22)
+        Me.consoletsmenu.Text = "Konsole"
+        Me.consoletsmenu.Visible = False
+        '
+        'repairbtn
+        '
+        Me.repairbtn.BackColor = System.Drawing.Color.Black
+        Me.repairbtn.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.planks_spruce
+        Me.repairbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.repairbtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.repairbtn.ForeColor = System.Drawing.Color.White
+        Me.repairbtn.Location = New System.Drawing.Point(499, 384)
+        Me.repairbtn.Name = "repairbtn"
+        Me.repairbtn.Size = New System.Drawing.Size(123, 23)
+        Me.repairbtn.TabIndex = 33
+        Me.repairbtn.Text = "Installation reparieren"
+        Me.repairbtn.UseVisualStyleBackColor = False
+        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.bgpanel
         Me.ClientSize = New System.Drawing.Size(641, 448)
+        Me.Controls.Add(Me.repairbtn)
         Me.Controls.Add(Me.consolebtn)
         Me.Controls.Add(Me.filenamelbl)
         Me.Controls.Add(Me.Panel3)
@@ -395,6 +461,7 @@ Partial Class MainWindow
         Me.Panel2.ResumeLayout(False)
         Me.optionsstrip.ResumeLayout(False)
         Me.optionsstrip.PerformLayout()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -426,4 +493,11 @@ Partial Class MainWindow
     Friend WithEvents musicchkbtn As ToolStripButton
     Friend WithEvents Panel4 As Panel
     Friend WithEvents consolebtn As Button
+    Friend WithEvents trayicon As NotifyIcon
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents showtsmenu As ToolStripMenuItem
+    Friend WithEvents closetsmenu As ToolStripMenuItem
+    Friend WithEvents consoletsmenu As ToolStripMenuItem
+    Friend WithEvents dividertsmenu As ToolStripSeparator
+    Friend WithEvents repairbtn As Button
 End Class

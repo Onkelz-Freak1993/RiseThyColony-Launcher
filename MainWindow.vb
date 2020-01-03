@@ -46,11 +46,17 @@ Public Class MainWindow
         console.debuglbl.AppendText("Total Physical Memory:      " & My.Computer.Info.TotalPhysicalMemory & " bytes (" & Math.Round(My.Computer.Info.TotalPhysicalMemory / 1024 ^ 3, 1) & " GB)" & vbNewLine)
         console.debuglbl.AppendText("Total Virtual Memory:       " & My.Computer.Info.TotalVirtualMemory & " bytes (" & Math.Round(My.Computer.Info.TotalVirtualMemory / 1024 ^ 3, 1) & " GB)" & vbNewLine & vbNewLine)
         console.debuglbl.AppendText("Installer Version:          " & My.Application.Info.Version.ToString & vbNewLine)
-        console.debuglbl.AppendText("CommandLineArgs:            " & Params.ToString & vbNewLine & vbNewLine)
+        console.debuglbl.AppendText("CommandLineArgs:           " & Params.ToString & vbNewLine & vbNewLine)
         console.debuglbl.AppendText("Installed SHA1:             " & My.Settings.SHA1.ToString & vbNewLine)
         console.debuglbl.AppendText("Serverfile SHA1:            " & filesizesha1.ToString & vbNewLine)
         console.debuglbl.AppendText("Serverfile Size:            " & GetDownloadSize("https://www.gingolingoo.de/files/Symphonia.zip") & " bytes (" & Math.Round(GetDownloadSize("https://www.gingolingoo.de/files/Symphonia.zip") / 1024 ^ 2, 1) & " MB)" & vbNewLine & vbNewLine)
-        'console.debuglbl.AppendText("Need to update: " & needToUpdate().ToString)
+
+        If My.Settings.SHA1 = filesizesha1.ToString Then
+            playbtn.Text = "Spielen"
+        Else
+            playbtn.Text = "Update"
+        End If
+
     End Sub
 
     Public Sub ExecuteParams()
@@ -63,12 +69,15 @@ Public Class MainWindow
             Select Case args(i).ToLower
 
                 Case "debug"
-                    Params = "debug"
+                    Params = Params & " debug"
                     consolebtn.Visible = True
                     console.Show()
+                    consoletsmenu.Visible = True
+                    dividertsmenu.Visible = True
+                    showtsmenu.Visible = True
 
                 Case "invis"
-                    Params = "invis"
+                    Params = Params & " invis"
                     playbtn.PerformClick()
                     Me.Hide()
                     Me.ShowInTaskbar = False
@@ -83,34 +92,54 @@ Public Class MainWindow
 
     Private Sub playbtn_Click(sender As Object, e As EventArgs) Handles playbtn.Click
         Dim Response As String
-        Try
-            If My.Settings.installpath = "" Then
-                console.debuglbl.AppendText("InstallPath: " & "none" & vbNewLine)
-                Response = MsgBox("Es wurde noch kein Installationspfad gesetzt. Soll der Standard Minecraftpfad verwendet werden?" & vbNewLine & vbNewLine & "HINWEIS: Es wird ausdrücklich empfohlen, ein eigenes Profil mit eigenem Ordner in Minecraft anzulegen.", vbYesNoCancel, "Installationspfad nicht gesetzt.")
-                If Response = vbYes Then
-                    My.Settings.installpath = appData & "\.minecraft"
-                ElseIf Response = vbNo Then
-                    FolderBrowserDialog1.ShowDialog()
-                    My.Settings.installpath = FolderBrowserDialog1.SelectedPath
+        Dim appData As String = GetFolderPath(SpecialFolder.ApplicationData)
+        Dim SelectedGameVersion As String = "1.12.2-forge1.12.2-14.23.5.2846"
+        Dim Root As String = appData + "\.minecraft"
 
-                ElseIf Response = vbCancel Then
+        If playbtn.Text = "Spielen" Then
+            'Dim p As New Process()
+            playbtn.Text = "Schließen"
+            playbtn.PerformClick()
+            'mc launcher.txt hier einfügen
+
+            'Process.Start("java -Xms512m -Xmx4G -Djava.library.path=natives/ -cp 'minecraft.jar;lwjgl.jar;lwjgl_util.jar' net.minecraft.client.Minecraft <username> <sessionID>")
+
+        ElseIf playbtn.text = "Schließen" Then
+            MsgBox("Du kannst jetzt über den Minecraft Launcher spielen." & vbNewLine & vbNewLine & "HINWEIS: Stelle Sicher, dass du den gleichen Pfad im Launcher-Spielprofil hinterlegt hast, wie du auch hier im Installer angegeben hast.")
+            Me.Close()
+        ElseIf playbtn.text = "Update" Then
+            Try
+                If My.Settings.installpath = "" Then
+                    console.debuglbl.AppendText("InstallPath:   " & "none" & vbNewLine)
+                    Response = MsgBox("Es wurde noch kein Installationspfad gesetzt. Soll der Standard Minecraftpfad verwendet werden?" & vbNewLine & vbNewLine & "HINWEIS: Es wird ausdrücklich empfohlen, ein eigenes Profil mit eigenem Ordner in Minecraft anzulegen.", vbYesNoCancel, "Installationspfad nicht gesetzt.")
+                    If Response = vbYes Then
+                        My.Settings.installpath = appData & "\.minecraft"
+                    ElseIf Response = vbNo Then
+                        FolderBrowserDialog1.ShowDialog()
+                        My.Settings.installpath = FolderBrowserDialog1.SelectedPath
+
+                    ElseIf Response = vbCancel Then
+                        MsgBox("Kein Installationspfad festgelegt. Programm wird beendet.")
+                        Application.Exit()
+                    End If
+                    console.debuglbl.AppendText("New InstallPath: " & My.Settings.installpath & vbNewLine)
+                End If
+                If My.Settings.installpath = "" Then
                     MsgBox("Kein Installationspfad festgelegt. Programm wird beendet.")
                     Application.Exit()
                 End If
-                console.debuglbl.AppendText("New InstallPath: " & My.Settings.installpath & vbNewLine)
-            End If
-            If My.Settings.installpath = "" Then
-                MsgBox("Kein Installationspfad festgelegt. Programm wird beendet.")
-                Application.Exit()
-            End If
-            installpathtxt.Text = My.Settings.installpath
-        Catch ex As Exception
+                installpathtxt.Text = My.Settings.installpath
+            Catch ex As Exception
 
-        End Try
-        My.Settings.Save()
-        console.debuglbl.AppendText("InstallPath: " & My.Settings.installpath & vbNewLine)
-        console.debuglbl.AppendText("Starting download..." & vbNewLine)
-        downloadModpack()
+            End Try
+            My.Settings.Save()
+            console.debuglbl.AppendText("InstallPath: " & My.Settings.installpath & vbNewLine)
+            console.debuglbl.AppendText("Starting download..." & vbNewLine)
+            downloadModpack()
+        Else
+            MsgBox("Es ist ein Fehler aufgetreten. Starte den Installer bitte erneut.")
+            Me.Close()
+        End If
     End Sub
 
     Private Sub Wc_DownloadProgressChanged(ByVal sender As Object, ByVal e As System.Net.DownloadProgressChangedEventArgs) Handles Wc.DownloadProgressChanged
@@ -120,6 +149,7 @@ Public Class MainWindow
         progress.Value = e.ProgressPercentage
         progresslbl.Text = Math.Round(ibreceived, 2).ToString("#,##0.00") & "MB von " & Math.Round(ibtoreceive, 2).ToString("#,##0.00") & "MB - " & e.ProgressPercentage & "%"
         playbtn.Text = "Lade herunter... " & e.ProgressPercentage & "%"
+        trayicon.Text = "Symphonia Installer - Lade herunter... " & e.ProgressPercentage & "%"
         filenamelbl.Text = TargetPath
         installpathbtn.Enabled = False
         installpathtxt.Enabled = False
@@ -133,7 +163,7 @@ Public Class MainWindow
         installpathbtn.Enabled = True
         installpathtxt.Enabled = True
         playbtn.Enabled = True
-        playbtn.Text = "Installieren"
+        playbtn.Text = "Spielen"
         playbtn.Image = My.Resources.book_writable
         'downloadMusic()
         extractModpack() 'Neue ab Version 2019.12.31.0
@@ -159,7 +189,7 @@ Public Class MainWindow
         installpathbtn.Enabled = True
         installpathtxt.Enabled = True
         playbtn.Enabled = True
-        playbtn.Text = "Installieren"
+        playbtn.Text = "Spielen"
         playbtn.Image = My.Resources.book_writable
         extractModpack()
     End Sub
@@ -214,6 +244,7 @@ Public Class MainWindow
         playbtn.Image = Nothing
         installpathbtn.Enabled = False
         installpathtxt.Enabled = False
+        repairbtn.Enabled = False
         playbtn.Enabled = False
         isInstalling = True
         Return Nothing
@@ -240,7 +271,8 @@ Public Class MainWindow
                 playbtn.Enabled = True
                 installpathbtn.Enabled = True
                 installpathtxt.Enabled = True
-                playbtn.Text = "Installieren"
+                repairbtn.Enabled = True
+                playbtn.Text = "Spielen"
                 playbtn.Image = My.Resources.book_writable
                 extractModpack()
             End If
@@ -321,8 +353,9 @@ Public Class MainWindow
                 My.Settings.SHA1 = filesizesha1
                 console.debuglbl.AppendText("Finished downloading zipfile to " & TargetPath & vbNewLine)
                 playbtn.Text = "Schließe ab... "
-                MsgBox("Fertig! :)")
+                'MsgBox("Fertig! :)")
                 Me.Enabled = True
+                playbtn.Text = "Schließen"
             Catch exc As Exception
                 console.debuglbl.AppendText("Extraction failed: " & exc.ToString & vbNewLine)
                 MsgBox(exc.ToString)
@@ -397,5 +430,22 @@ Public Class MainWindow
 
     Private Sub consolebtn_Click(sender As Object, e As EventArgs) Handles consolebtn.Click
         console.Show()
+    End Sub
+
+    Private Sub BeendenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles closetsmenu.Click
+        Me.Close()
+    End Sub
+
+    Private Sub AnzeigenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles showtsmenu.Click
+        Me.Show()
+    End Sub
+
+    Private Sub KonsoleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles consoletsmenu.Click
+        console.Show()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles repairbtn.Click
+        playbtn.Text = "Update"
+        playbtn.PerformClick()
     End Sub
 End Class
