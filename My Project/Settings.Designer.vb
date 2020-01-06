@@ -89,6 +89,18 @@ Namespace My
                 Me("SHA1") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property JavaPath() As String
+            Get
+                Return CType(Me("JavaPath"),String)
+            End Get
+            Set
+                Me("JavaPath") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

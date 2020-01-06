@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports Newtonsoft.Json
 Imports System.Security.Cryptography
 Imports System.Environment
 Imports System.Net
@@ -27,13 +28,12 @@ Public Class MainWindow
         Else
             console.debuglbl.AppendText("OS Architecture:            " & "x86" & vbNewLine)
         End If
+        Return True
     End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ExecuteParams()
-
-        optionsstrip.Visible = False
-        installpathtxt.Text = My.Settings.installpath
+        settings.installpathtxt.Text = My.Settings.installpath
         versionlbl.Text = My.Application.Info.Version.ToString
 
         filesizesha1 = getSHA1Hash(GetDownloadSize("https://www.gingolingoo.de/files/Symphonia.zip"))
@@ -89,25 +89,20 @@ Public Class MainWindow
         Next
     End Sub
 
-
     Private Sub playbtn_Click(sender As Object, e As EventArgs) Handles playbtn.Click
         Dim Response As String
-        Dim appData As String = GetFolderPath(SpecialFolder.ApplicationData)
-        Dim SelectedGameVersion As String = "1.12.2-forge1.12.2-14.23.5.2846"
-        Dim Root As String = appData + "\.minecraft"
 
         If playbtn.Text = "Spielen" Then
             'Dim p As New Process()
             playbtn.Text = "Schließen"
             playbtn.PerformClick()
-            'mc launcher.txt hier einfügen
-
+            'startMinecraft()
             'Process.Start("java -Xms512m -Xmx4G -Djava.library.path=natives/ -cp 'minecraft.jar;lwjgl.jar;lwjgl_util.jar' net.minecraft.client.Minecraft <username> <sessionID>")
 
-        ElseIf playbtn.text = "Schließen" Then
+        ElseIf playbtn.Text = "Schließen" Then
             MsgBox("Du kannst jetzt über den Minecraft Launcher spielen." & vbNewLine & vbNewLine & "HINWEIS: Stelle Sicher, dass du den gleichen Pfad im Launcher-Spielprofil hinterlegt hast, wie du auch hier im Installer angegeben hast.")
             Me.Close()
-        ElseIf playbtn.text = "Update" Then
+        ElseIf playbtn.Text = "Update" Then
             Try
                 If My.Settings.installpath = "" Then
                     console.debuglbl.AppendText("InstallPath:   " & "none" & vbNewLine)
@@ -128,7 +123,7 @@ Public Class MainWindow
                     MsgBox("Kein Installationspfad festgelegt. Programm wird beendet.")
                     Application.Exit()
                 End If
-                installpathtxt.Text = My.Settings.installpath
+                settings.installpathtxt.Text = My.Settings.installpath
             Catch ex As Exception
 
             End Try
@@ -151,8 +146,8 @@ Public Class MainWindow
         playbtn.Text = "Lade herunter... " & e.ProgressPercentage & "%"
         trayicon.Text = "Symphonia Installer - Lade herunter... " & e.ProgressPercentage & "%"
         filenamelbl.Text = TargetPath
-        installpathbtn.Enabled = False
-        installpathtxt.Enabled = False
+        settings.installpathbtn.Enabled = False
+        settings.installpathtxt.Enabled = False
         playbtn.Image = Nothing
         playbtn.Enabled = False
         isInstalling = True
@@ -160,8 +155,8 @@ Public Class MainWindow
 
     Private Sub Wc_DownloadFileCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.AsyncCompletedEventArgs) Handles Wc.DownloadFileCompleted
         isInstalling = False
-        installpathbtn.Enabled = True
-        installpathtxt.Enabled = True
+        settings.installpathbtn.Enabled = True
+        settings.installpathtxt.Enabled = True
         playbtn.Enabled = True
         playbtn.Text = "Spielen"
         playbtn.Image = My.Resources.book_writable
@@ -177,8 +172,8 @@ Public Class MainWindow
         progresslbl.Text = Math.Round(ibreceived, 2).ToString("#,##0.00") & "MB von " & Math.Round(ibtoreceive, 2).ToString("#,##0.00") & "MB - " & e.ProgressPercentage & "%"
         playbtn.Text = "Lade herunter... " & e.ProgressPercentage & "%"
         filenamelbl.Text = TargetPath
-        installpathbtn.Enabled = False
-        installpathtxt.Enabled = False
+        settings.installpathbtn.Enabled = False
+        settings.installpathtxt.Enabled = False
         playbtn.Image = Nothing
         playbtn.Enabled = False
         isInstalling = True
@@ -186,24 +181,22 @@ Public Class MainWindow
 
     Private Sub Wc2_DownloadFileCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.AsyncCompletedEventArgs) Handles Wc2.DownloadFileCompleted
         isInstalling = False
-        installpathbtn.Enabled = True
-        installpathtxt.Enabled = True
+        settings.installpathbtn.Enabled = True
+        settings.installpathtxt.Enabled = True
         playbtn.Enabled = True
         playbtn.Text = "Spielen"
         playbtn.Image = My.Resources.book_writable
         extractModpack()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles installpathbtn.Click
-        FolderBrowserDialog1.ShowDialog()
-        My.Settings.installpath = FolderBrowserDialog1.SelectedPath
-        installpathtxt.Text = My.Settings.installpath
-    End Sub
-
     Private Sub Form1_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         If File.Exists(My.Settings.installpath & "\Symphonia.zip") Then
             My.Computer.FileSystem.DeleteFile(My.Settings.installpath & "\Symphonia.zip")
         End If
+
+        Application.Exit()
+        Application.ExitThread()
+
         'If File.Exists(My.Settings.installpath & "\GSMPNM.zip") Then
         '    My.Computer.FileSystem.DeleteFile(My.Settings.installpath & "\GSMPNM.zip")
         'End If
@@ -212,7 +205,7 @@ Public Class MainWindow
         'End If
     End Sub
 
-    Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+    Private Sub MainWindow_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         Dim Response As String
         If isInstalling = True Then
             Response = MsgBox("Wirklich abbrechen? Das Modpack muss dann erneut Heruntergeladen und entpackt werden.", vbYesNo, "Installation abbrechen?")
@@ -242,8 +235,8 @@ Public Class MainWindow
         Wc.DownloadFileAsync(New Uri("https://www.gingolingoo.de/files/Symphonia.zip"), TargetPath)
         'Wc.DownloadFileAsync(New Uri("https://www.gingolingoo.de/files/GSMPNM.zip"), TargetPath)
         playbtn.Image = Nothing
-        installpathbtn.Enabled = False
-        installpathtxt.Enabled = False
+        settings.installpathbtn.Enabled = False
+        settings.installpathtxt.Enabled = False
         repairbtn.Enabled = False
         playbtn.Enabled = False
         isInstalling = True
@@ -264,13 +257,13 @@ Public Class MainWindow
                 Wc2.DownloadFileAsync(New Uri("https://www.gingolingoo.de/files/GSMPJM.zip"), TargetPath)
                 playbtn.Image = Nothing
                 playbtn.Enabled = False
-                installpathbtn.Enabled = False
-                installpathtxt.Enabled = False
+                settings.installpathbtn.Enabled = False
+                settings.installpathtxt.Enabled = False
                 isInstalling = True
             ElseIf Response = vbNo Then
                 playbtn.Enabled = True
-                installpathbtn.Enabled = True
-                installpathtxt.Enabled = True
+                settings.installpathbtn.Enabled = True
+                settings.installpathtxt.Enabled = True
                 repairbtn.Enabled = True
                 playbtn.Text = "Spielen"
                 playbtn.Image = My.Resources.book_writable
@@ -338,8 +331,8 @@ Public Class MainWindow
 
                     Me.Enabled = False
                     playbtn.Text = "Entpacke Mods... "
-                    installpathbtn.Enabled = False
-                    installpathtxt.Enabled = False
+                    settings.installpathbtn.Enabled = False
+                    settings.installpathtxt.Enabled = False
                     playbtn.Image = Nothing
                     playbtn.Enabled = False
                     isInstalling = True
@@ -384,8 +377,8 @@ Public Class MainWindow
                     End If
 
                     playbtn.Text = "Entpacke Musik... "
-                    installpathbtn.Enabled = False
-                    installpathtxt.Enabled = False
+                    settings.installpathbtn.Enabled = False
+                    settings.installpathtxt.Enabled = False
                     playbtn.Image = Nothing
                     playbtn.Enabled = False
                     isInstalling = True
@@ -444,8 +437,12 @@ Public Class MainWindow
         console.Show()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles repairbtn.Click
+    Private Sub repairbtn_Click(sender As Object, e As EventArgs) Handles repairbtn.Click
         playbtn.Text = "Update"
         playbtn.PerformClick()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        settings.Show()
     End Sub
 End Class

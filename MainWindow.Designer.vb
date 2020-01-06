@@ -28,9 +28,6 @@ Partial Class MainWindow
         Me.versionlbl = New System.Windows.Forms.Label()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.installpathtxt = New System.Windows.Forms.TextBox()
-        Me.installpathbtn = New System.Windows.Forms.Button()
         Me.progress = New System.Windows.Forms.ProgressBar()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.progresslbl = New System.Windows.Forms.Label()
@@ -44,20 +41,16 @@ Partial Class MainWindow
         Me.PictureBox9 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.optionsstrip = New System.Windows.Forms.ToolStrip()
-        Me.javachkbtn = New System.Windows.Forms.ToolStripButton()
-        Me.forgechkbtn = New System.Windows.Forms.ToolStripButton()
-        Me.musicchkbtn = New System.Windows.Forms.ToolStripButton()
-        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.filenamelbl = New System.Windows.Forms.LinkLabel()
         Me.consolebtn = New System.Windows.Forms.Button()
         Me.trayicon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.showtsmenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.closetsmenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.dividertsmenu = New System.Windows.Forms.ToolStripSeparator()
         Me.consoletsmenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.dividertsmenu = New System.Windows.Forms.ToolStripSeparator()
+        Me.closetsmenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.repairbtn = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -68,7 +61,6 @@ Partial Class MainWindow
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
-        Me.optionsstrip.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -81,7 +73,7 @@ Partial Class MainWindow
         Me.playbtn.ForeColor = System.Drawing.Color.White
         Me.playbtn.Image = Global.Symphonia_Installer.My.Resources.Resources.book_writable
         Me.playbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.playbtn.Location = New System.Drawing.Point(207, 384)
+        Me.playbtn.Location = New System.Drawing.Point(207, 302)
         Me.playbtn.Name = "playbtn"
         Me.playbtn.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
         Me.playbtn.Size = New System.Drawing.Size(227, 54)
@@ -91,7 +83,7 @@ Partial Class MainWindow
         '
         'versionlbl
         '
-        Me.versionlbl.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.versionlbl.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.versionlbl.BackColor = System.Drawing.Color.Transparent
         Me.versionlbl.Location = New System.Drawing.Point(440, 14)
         Me.versionlbl.Name = "versionlbl"
@@ -102,6 +94,7 @@ Partial Class MainWindow
         '
         'LinkLabel1
         '
+        Me.LinkLabel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.BackColor = System.Drawing.Color.Transparent
         Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -116,53 +109,22 @@ Partial Class MainWindow
         '
         'Panel1
         '
+        Me.Panel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
         Me.Panel1.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.nether_brick
         Me.Panel1.Controls.Add(Me.LinkLabel1)
         Me.Panel1.Controls.Add(Me.versionlbl)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 416)
+        Me.Panel1.Location = New System.Drawing.Point(0, 334)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(641, 32)
         Me.Panel1.TabIndex = 7
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Location = New System.Drawing.Point(19, 270)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(86, 13)
-        Me.Label1.TabIndex = 8
-        Me.Label1.Text = "Installationspfad:"
-        '
-        'installpathtxt
-        '
-        Me.installpathtxt.Location = New System.Drawing.Point(111, 267)
-        Me.installpathtxt.Name = "installpathtxt"
-        Me.installpathtxt.ReadOnly = True
-        Me.installpathtxt.Size = New System.Drawing.Size(409, 20)
-        Me.installpathtxt.TabIndex = 9
-        '
-        'installpathbtn
-        '
-        Me.installpathbtn.BackColor = System.Drawing.Color.Black
-        Me.installpathbtn.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.planks_spruce
-        Me.installpathbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.installpathbtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.installpathbtn.ForeColor = System.Drawing.Color.White
-        Me.installpathbtn.Location = New System.Drawing.Point(526, 265)
-        Me.installpathbtn.Name = "installpathbtn"
-        Me.installpathbtn.Size = New System.Drawing.Size(96, 23)
-        Me.installpathbtn.TabIndex = 10
-        Me.installpathbtn.Text = "Durchsuchen..."
-        Me.installpathbtn.UseVisualStyleBackColor = False
-        '
         'progress
         '
-        Me.progress.Location = New System.Drawing.Point(22, 350)
+        Me.progress.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.progress.Location = New System.Drawing.Point(22, 284)
         Me.progress.Name = "progress"
-        Me.progress.Size = New System.Drawing.Size(600, 23)
+        Me.progress.Size = New System.Drawing.Size(600, 12)
         Me.progress.TabIndex = 11
         '
         'FolderBrowserDialog1
@@ -172,10 +134,10 @@ Partial Class MainWindow
         '
         'progresslbl
         '
-        Me.progresslbl.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.progresslbl.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.progresslbl.BackColor = System.Drawing.Color.Transparent
         Me.progresslbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.progresslbl.Location = New System.Drawing.Point(427, 325)
+        Me.progresslbl.Location = New System.Drawing.Point(427, 259)
         Me.progresslbl.Name = "progresslbl"
         Me.progresslbl.Size = New System.Drawing.Size(195, 22)
         Me.progresslbl.TabIndex = 18
@@ -203,9 +165,10 @@ Partial Class MainWindow
         '
         'PictureBox4
         '
+        Me.PictureBox4.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.PictureBox4.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox4.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.blcorner
-        Me.PictureBox4.Location = New System.Drawing.Point(-1, 410)
+        Me.PictureBox4.Location = New System.Drawing.Point(-1, 328)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(13, 13)
         Me.PictureBox4.TabIndex = 21
@@ -213,9 +176,10 @@ Partial Class MainWindow
         '
         'PictureBox5
         '
+        Me.PictureBox5.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.PictureBox5.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox5.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.brcorner
-        Me.PictureBox5.Location = New System.Drawing.Point(629, 410)
+        Me.PictureBox5.Location = New System.Drawing.Point(629, 328)
         Me.PictureBox5.Name = "PictureBox5"
         Me.PictureBox5.Size = New System.Drawing.Size(13, 13)
         Me.PictureBox5.TabIndex = 22
@@ -233,9 +197,10 @@ Partial Class MainWindow
         '
         'PictureBox7
         '
+        Me.PictureBox7.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.PictureBox7.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox7.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.bottombar
-        Me.PictureBox7.Location = New System.Drawing.Point(11, 410)
+        Me.PictureBox7.Location = New System.Drawing.Point(11, 328)
         Me.PictureBox7.Name = "PictureBox7"
         Me.PictureBox7.Size = New System.Drawing.Size(619, 13)
         Me.PictureBox7.TabIndex = 24
@@ -243,21 +208,23 @@ Partial Class MainWindow
         '
         'PictureBox8
         '
+        Me.PictureBox8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.PictureBox8.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox8.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.leftbar
         Me.PictureBox8.Location = New System.Drawing.Point(-1, 253)
         Me.PictureBox8.Name = "PictureBox8"
-        Me.PictureBox8.Size = New System.Drawing.Size(13, 157)
+        Me.PictureBox8.Size = New System.Drawing.Size(13, 75)
         Me.PictureBox8.TabIndex = 25
         Me.PictureBox8.TabStop = False
         '
         'PictureBox9
         '
+        Me.PictureBox9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.PictureBox9.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox9.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.rightbar
         Me.PictureBox9.Location = New System.Drawing.Point(629, 253)
         Me.PictureBox9.Name = "PictureBox9"
-        Me.PictureBox9.Size = New System.Drawing.Size(13, 157)
+        Me.PictureBox9.Size = New System.Drawing.Size(13, 75)
         Me.PictureBox9.TabIndex = 26
         Me.PictureBox9.TabStop = False
         '
@@ -285,59 +252,12 @@ Partial Class MainWindow
         Me.Panel4.Size = New System.Drawing.Size(619, 223)
         Me.Panel4.TabIndex = 24
         '
-        'optionsstrip
-        '
-        Me.optionsstrip.AutoSize = False
-        Me.optionsstrip.BackColor = System.Drawing.Color.Transparent
-        Me.optionsstrip.Dock = System.Windows.Forms.DockStyle.None
-        Me.optionsstrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.optionsstrip.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.optionsstrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.javachkbtn, Me.forgechkbtn, Me.musicchkbtn})
-        Me.optionsstrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow
-        Me.optionsstrip.Location = New System.Drawing.Point(111, 290)
-        Me.optionsstrip.Name = "optionsstrip"
-        Me.optionsstrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.optionsstrip.Size = New System.Drawing.Size(511, 37)
-        Me.optionsstrip.TabIndex = 28
-        Me.optionsstrip.Text = "Optionen"
-        '
-        'javachkbtn
-        '
-        Me.javachkbtn.Image = Global.Symphonia_Installer.My.Resources.Resources.dye_powder_brown
-        Me.javachkbtn.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.javachkbtn.Name = "javachkbtn"
-        Me.javachkbtn.Size = New System.Drawing.Size(146, 36)
-        Me.javachkbtn.Text = "Java x64 installieren"
-        '
-        'forgechkbtn
-        '
-        Me.forgechkbtn.Image = Global.Symphonia_Installer.My.Resources.Resources.iron_ingot
-        Me.forgechkbtn.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.forgechkbtn.Name = "forgechkbtn"
-        Me.forgechkbtn.Size = New System.Drawing.Size(133, 36)
-        Me.forgechkbtn.Text = "Forge installieren"
-        '
-        'musicchkbtn
-        '
-        Me.musicchkbtn.Image = Global.Symphonia_Installer.My.Resources.Resources.record_13
-        Me.musicchkbtn.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.musicchkbtn.Name = "musicchkbtn"
-        Me.musicchkbtn.Size = New System.Drawing.Size(135, 36)
-        Me.musicchkbtn.Text = "Musik installieren"
-        '
-        'Panel3
-        '
-        Me.Panel3.BackColor = System.Drawing.Color.Transparent
-        Me.Panel3.Location = New System.Drawing.Point(619, 290)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(7, 45)
-        Me.Panel3.TabIndex = 29
-        '
         'filenamelbl
         '
+        Me.filenamelbl.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.filenamelbl.BackColor = System.Drawing.Color.Transparent
         Me.filenamelbl.LinkColor = System.Drawing.Color.White
-        Me.filenamelbl.Location = New System.Drawing.Point(19, 325)
+        Me.filenamelbl.Location = New System.Drawing.Point(19, 259)
         Me.filenamelbl.Name = "filenamelbl"
         Me.filenamelbl.Size = New System.Drawing.Size(415, 22)
         Me.filenamelbl.TabIndex = 30
@@ -345,18 +265,17 @@ Partial Class MainWindow
         '
         'consolebtn
         '
+        Me.consolebtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.consolebtn.BackColor = System.Drawing.Color.Black
         Me.consolebtn.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.planks_spruce
         Me.consolebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.consolebtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.consolebtn.ForeColor = System.Drawing.Color.White
         Me.consolebtn.Image = Global.Symphonia_Installer.My.Resources.Resources.icons8_console_16
-        Me.consolebtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.consolebtn.Location = New System.Drawing.Point(22, 381)
+        Me.consolebtn.Location = New System.Drawing.Point(54, 302)
         Me.consolebtn.Name = "consolebtn"
-        Me.consolebtn.Size = New System.Drawing.Size(74, 23)
+        Me.consolebtn.Size = New System.Drawing.Size(26, 23)
         Me.consolebtn.TabIndex = 31
-        Me.consolebtn.Text = "Konsole"
         Me.consolebtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.consolebtn.UseVisualStyleBackColor = False
         Me.consolebtn.Visible = False
@@ -383,18 +302,6 @@ Partial Class MainWindow
         Me.showtsmenu.Text = "Programm zeigen"
         Me.showtsmenu.Visible = False
         '
-        'closetsmenu
-        '
-        Me.closetsmenu.Name = "closetsmenu"
-        Me.closetsmenu.Size = New System.Drawing.Size(173, 22)
-        Me.closetsmenu.Text = "Beenden"
-        '
-        'dividertsmenu
-        '
-        Me.dividertsmenu.Name = "dividertsmenu"
-        Me.dividertsmenu.Size = New System.Drawing.Size(170, 6)
-        Me.dividertsmenu.Visible = False
-        '
         'consoletsmenu
         '
         Me.consoletsmenu.Image = Global.Symphonia_Installer.My.Resources.Resources.icons8_console_16
@@ -403,32 +310,59 @@ Partial Class MainWindow
         Me.consoletsmenu.Text = "Konsole"
         Me.consoletsmenu.Visible = False
         '
+        'dividertsmenu
+        '
+        Me.dividertsmenu.Name = "dividertsmenu"
+        Me.dividertsmenu.Size = New System.Drawing.Size(170, 6)
+        Me.dividertsmenu.Visible = False
+        '
+        'closetsmenu
+        '
+        Me.closetsmenu.Name = "closetsmenu"
+        Me.closetsmenu.Size = New System.Drawing.Size(173, 22)
+        Me.closetsmenu.Text = "Beenden"
+        '
         'repairbtn
         '
+        Me.repairbtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.repairbtn.BackColor = System.Drawing.Color.Black
         Me.repairbtn.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.planks_spruce
         Me.repairbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.repairbtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.repairbtn.ForeColor = System.Drawing.Color.White
-        Me.repairbtn.Location = New System.Drawing.Point(499, 384)
+        Me.repairbtn.Location = New System.Drawing.Point(517, 302)
         Me.repairbtn.Name = "repairbtn"
-        Me.repairbtn.Size = New System.Drawing.Size(123, 23)
+        Me.repairbtn.Size = New System.Drawing.Size(105, 23)
         Me.repairbtn.TabIndex = 33
-        Me.repairbtn.Text = "Installation reparieren"
+        Me.repairbtn.Text = "Reparieren"
         Me.repairbtn.UseVisualStyleBackColor = False
+        '
+        'Button1
+        '
+        Me.Button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.Button1.BackColor = System.Drawing.Color.Black
+        Me.Button1.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.planks_spruce
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.White
+        Me.Button1.Image = Global.Symphonia_Installer.My.Resources.Resources.cog_16x16
+        Me.Button1.Location = New System.Drawing.Point(22, 302)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(26, 23)
+        Me.Button1.TabIndex = 34
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.bgpanel
-        Me.ClientSize = New System.Drawing.Size(641, 448)
+        Me.ClientSize = New System.Drawing.Size(641, 366)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.repairbtn)
         Me.Controls.Add(Me.consolebtn)
         Me.Controls.Add(Me.filenamelbl)
-        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.progresslbl)
-        Me.Controls.Add(Me.optionsstrip)
         Me.Controls.Add(Me.playbtn)
         Me.Controls.Add(Me.PictureBox7)
         Me.Controls.Add(Me.Panel2)
@@ -437,9 +371,6 @@ Partial Class MainWindow
         Me.Controls.Add(Me.PictureBox5)
         Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.progress)
-        Me.Controls.Add(Me.installpathbtn)
-        Me.Controls.Add(Me.installpathtxt)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Panel1)
         Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -459,20 +390,14 @@ Partial Class MainWindow
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
-        Me.optionsstrip.ResumeLayout(False)
-        Me.optionsstrip.PerformLayout()
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents playbtn As Button
     Friend WithEvents versionlbl As Label
     Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label1 As Label
-    Friend WithEvents installpathtxt As TextBox
-    Friend WithEvents installpathbtn As Button
     Friend WithEvents progress As ProgressBar
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
     Friend WithEvents progresslbl As Label
@@ -485,12 +410,7 @@ Partial Class MainWindow
     Friend WithEvents PictureBox8 As PictureBox
     Friend WithEvents PictureBox9 As PictureBox
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents optionsstrip As ToolStrip
-    Friend WithEvents forgechkbtn As ToolStripButton
-    Friend WithEvents javachkbtn As ToolStripButton
-    Friend WithEvents Panel3 As Panel
     Friend WithEvents filenamelbl As LinkLabel
-    Friend WithEvents musicchkbtn As ToolStripButton
     Friend WithEvents Panel4 As Panel
     Friend WithEvents consolebtn As Button
     Friend WithEvents trayicon As NotifyIcon
@@ -500,4 +420,5 @@ Partial Class MainWindow
     Friend WithEvents consoletsmenu As ToolStripMenuItem
     Friend WithEvents dividertsmenu As ToolStripSeparator
     Friend WithEvents repairbtn As Button
+    Friend WithEvents Button1 As Button
 End Class
