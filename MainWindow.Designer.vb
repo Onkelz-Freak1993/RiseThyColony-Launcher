@@ -51,6 +51,7 @@ Partial Class MainWindow
         Me.closetsmenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.repairbtn = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.usernamelbl = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,6 +62,7 @@ Partial Class MainWindow
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
+        Me.Panel4.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -247,6 +249,7 @@ Partial Class MainWindow
         '
         Me.Panel4.BackgroundImage = CType(resources.GetObject("Panel4.BackgroundImage"), System.Drawing.Image)
         Me.Panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Panel4.Controls.Add(Me.usernamelbl)
         Me.Panel4.Location = New System.Drawing.Point(11, 12)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(619, 223)
@@ -352,6 +355,15 @@ Partial Class MainWindow
         Me.Button1.TabIndex = 34
         Me.Button1.UseVisualStyleBackColor = False
         '
+        'usernamelbl
+        '
+        Me.usernamelbl.AutoSize = True
+        Me.usernamelbl.Location = New System.Drawing.Point(1, 0)
+        Me.usernamelbl.Name = "usernamelbl"
+        Me.usernamelbl.Size = New System.Drawing.Size(85, 13)
+        Me.usernamelbl.TabIndex = 0
+        Me.usernamelbl.Text = "Eingeloggt als ..."
+        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -378,7 +390,7 @@ Partial Class MainWindow
         Me.MaximizeBox = False
         Me.Name = "MainWindow"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Symphonia Installer"
+        Me.Text = "Symphonia Launcher"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -390,6 +402,8 @@ Partial Class MainWindow
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -421,4 +435,5 @@ Partial Class MainWindow
     Friend WithEvents dividertsmenu As ToolStripSeparator
     Friend WithEvents repairbtn As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents usernamelbl As Label
 End Class

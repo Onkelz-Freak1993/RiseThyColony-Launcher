@@ -1,5 +1,4 @@
 ﻿Imports System.ComponentModel
-Imports Newtonsoft.Json
 Imports System.Security.Cryptography
 Imports System.Environment
 Imports System.Net
@@ -50,6 +49,10 @@ Public Class MainWindow
         console.debuglbl.AppendText("Installed SHA1:             " & My.Settings.SHA1.ToString & vbNewLine)
         console.debuglbl.AppendText("Serverfile SHA1:            " & filesizesha1.ToString & vbNewLine)
         console.debuglbl.AppendText("Serverfile Size:            " & GetDownloadSize("https://www.gingolingoo.de/files/Symphonia.zip") & " bytes (" & Math.Round(GetDownloadSize("https://www.gingolingoo.de/files/Symphonia.zip") / 1024 ^ 2, 1) & " MB)" & vbNewLine & vbNewLine)
+
+        If Not Params.Contains("debug") Then
+            settings.TabControl1.TabPages.Remove(settings.TabControl1.TabPages(2))
+        End If
 
         If My.Settings.SHA1 = filesizesha1.ToString Then
             playbtn.Text = "Spielen"
@@ -444,5 +447,14 @@ Public Class MainWindow
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         settings.Show()
+    End Sub
+
+    Private Sub MainWindow_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        My.Settings.accessToken = Nothing
+        My.Settings.clientToken = Nothing
+        My.Settings.userID = Nothing
+        My.Settings.currentUser = Nothing
+        My.Settings.currentUser = Nothing
+        My.Settings.resultJson = Nothing
     End Sub
 End Class

@@ -101,6 +101,66 @@ Namespace My
                 Me("JavaPath") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property accessToken() As String
+            Get
+                Return CType(Me("accessToken"),String)
+            End Get
+            Set
+                Me("accessToken") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property clientToken() As String
+            Get
+                Return CType(Me("clientToken"),String)
+            End Get
+            Set
+                Me("clientToken") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property resultJson() As String
+            Get
+                Return CType(Me("resultJson"),String)
+            End Get
+            Set
+                Me("resultJson") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property currentUser() As String
+            Get
+                Return CType(Me("currentUser"),String)
+            End Get
+            Set
+                Me("currentUser") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property userID() As String
+            Get
+                Return CType(Me("userID"),String)
+            End Get
+            Set
+                Me("userID") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

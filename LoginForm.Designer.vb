@@ -23,29 +23,29 @@ Partial Class LoginForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LoginForm))
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.loginbtn = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.MaskedTextBox1 = New System.Windows.Forms.MaskedTextBox()
+        Me.usernametxt = New System.Windows.Forms.TextBox()
+        Me.pwdtxt = New System.Windows.Forms.MaskedTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Button1
+        'loginbtn
         '
-        Me.Button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.Button1.BackColor = System.Drawing.Color.Black
-        Me.Button1.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.planks_spruce
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(84, 111)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(105, 23)
-        Me.Button1.TabIndex = 35
-        Me.Button1.Text = "Einloggen"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.loginbtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.loginbtn.BackColor = System.Drawing.Color.Black
+        Me.loginbtn.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.planks_spruce
+        Me.loginbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.loginbtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.loginbtn.ForeColor = System.Drawing.Color.White
+        Me.loginbtn.Location = New System.Drawing.Point(84, 111)
+        Me.loginbtn.Name = "loginbtn"
+        Me.loginbtn.Size = New System.Drawing.Size(105, 23)
+        Me.loginbtn.TabIndex = 35
+        Me.loginbtn.Text = "Einloggen"
+        Me.loginbtn.UseVisualStyleBackColor = False
         '
         'Label1
         '
@@ -56,9 +56,9 @@ Partial Class LoginForm
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(12, 60)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(78, 13)
+        Me.Label1.Size = New System.Drawing.Size(39, 13)
         Me.Label1.TabIndex = 36
-        Me.Label1.Text = "Benutzername:"
+        Me.Label1.Text = "E-Mail:"
         '
         'Label2
         '
@@ -73,23 +73,24 @@ Partial Class LoginForm
         Me.Label2.TabIndex = 37
         Me.Label2.Text = "Passwort:"
         '
-        'TextBox1
+        'usernametxt
         '
-        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.usernametxt.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.Location = New System.Drawing.Point(96, 57)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(276, 20)
-        Me.TextBox1.TabIndex = 38
+        Me.usernametxt.Location = New System.Drawing.Point(96, 57)
+        Me.usernametxt.Name = "usernametxt"
+        Me.usernametxt.Size = New System.Drawing.Size(276, 20)
+        Me.usernametxt.TabIndex = 38
         '
-        'MaskedTextBox1
+        'pwdtxt
         '
-        Me.MaskedTextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.pwdtxt.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.MaskedTextBox1.Location = New System.Drawing.Point(96, 83)
-        Me.MaskedTextBox1.Name = "MaskedTextBox1"
-        Me.MaskedTextBox1.Size = New System.Drawing.Size(276, 20)
-        Me.MaskedTextBox1.TabIndex = 39
+        Me.pwdtxt.Location = New System.Drawing.Point(96, 83)
+        Me.pwdtxt.Name = "pwdtxt"
+        Me.pwdtxt.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
+        Me.pwdtxt.Size = New System.Drawing.Size(276, 20)
+        Me.pwdtxt.TabIndex = 39
         '
         'Label3
         '
@@ -128,11 +129,11 @@ Partial Class LoginForm
         Me.ClientSize = New System.Drawing.Size(384, 146)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.MaskedTextBox1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.pwdtxt)
+        Me.Controls.Add(Me.usernametxt)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.loginbtn)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -145,11 +146,11 @@ Partial Class LoginForm
 
     End Sub
 
-    Friend WithEvents Button1 As Button
+    Friend WithEvents loginbtn As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents MaskedTextBox1 As MaskedTextBox
+    Friend WithEvents usernametxt As TextBox
+    Friend WithEvents pwdtxt As MaskedTextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Button2 As Button
 End Class
