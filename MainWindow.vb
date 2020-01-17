@@ -4,6 +4,7 @@ Imports System.Environment
 Imports System.Net
 Imports Shell32
 Imports System.IO
+Imports Microsoft.Win32
 
 Public Class MainWindow
     Dim isInstalling = False
@@ -12,6 +13,7 @@ Public Class MainWindow
     Dim extractedMusicbefore As Boolean = False
     Dim Params As String = ""
     Dim filesizesha1 As String
+    Dim JavaInstalled As Boolean = False
 
     Public WithEvents Wc As New WebClient
     Public WithEvents Wc2 As New WebClient
@@ -23,36 +25,65 @@ Public Class MainWindow
 
     Function isOS64bit()
         If Environment.Is64BitOperatingSystem = True Then
-            console.debuglbl.AppendText("OS Architecture:            " & "x64" & vbNewLine)
+            console.debugcon.AppendText("OS Architecture:            " & "x64" & vbNewLine)
         Else
-            console.debuglbl.AppendText("OS Architecture:            " & "x86" & vbNewLine)
+            console.debugcon.AppendText("OS Architecture:            " & "x86" & vbNewLine)
         End If
         Return True
     End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+        For Each Dir As String In Directory.GetDirectories(appData & "\.minecraft\versions")
+            Dim dirInfo As New System.IO.DirectoryInfo(Dir)
+            If dirInfo.Name.Contains("forge") Then
+                settings.SelectedGameVersion.Items.Add(dirInfo.Name)
+                settings.SelectedGameVersion.SelectedItem = dirInfo.Name
+            End If
+        Next
+
+
+        Try
+            My.Settings.JavaPath = GetJavaInstallationPath.ToString & "\bin\javaw.exe"
+            settings.javapathtxt.Text = My.Settings.JavaPath
+        Catch ex As Exception
+            Dim Response As String
+            Response = MsgBox("Die Java Laufzeitumgebung wurde nicht automatisch gefunden. " &
+                              "Um Minecraft starten zu können, muss die Ausführbare Datei von Java (javaw.exe) in den Java-Optionen angegeben werden. " &
+                              "Üblicherweise befindet diese sich unter:" & vbNewLine & "'C:\Program Files\Java\jre-<versionsnummer>\bin\javaw.exe'." & vbNewLine & vbNewLine &
+                              "Ja = Java ist installiert, ich zeig dir wo..." & vbNewLine &
+                              "Nein - Java ist nicht installiert, bitte installieren...", vbYesNo, "Java wurde nicht automatisch gefunden.")
+            If Response = vbYes Then
+                JavaInstalled = True
+                Try
+                    settings.OpenFileDialog1.ShowDialog()
+                    settings.javapathtxt.Text = settings.OpenFileDialog1.FileName
+                Catch
+                    JavaInstalled = False
+                End Try
+            ElseIf Response = vbNo Then
+                JavaInstalled = False
+            End If
+        End Try
         ExecuteParams()
         settings.installpathtxt.Text = My.Settings.installpath
         versionlbl.Text = My.Application.Info.Version.ToString
 
         filesizesha1 = getSHA1Hash(GetDownloadSize("https://www.gingolingoo.de/files/Symphonia.zip"))
-        console.debuglbl.AppendText(My.Computer.Clock.LocalTime.ToString & vbNewLine & vbNewLine)
-        console.debuglbl.AppendText("OS Full Name:               " & My.Computer.Info.OSFullName & vbNewLine)
-        console.debuglbl.AppendText("OS Platform:                " & My.Computer.Info.OSPlatform & vbNewLine)
+        console.debugcon.AppendText(My.Computer.Clock.LocalTime.ToString & vbNewLine & vbNewLine)
+        console.debugcon.AppendText("OS Full Name:               " & My.Computer.Info.OSFullName & vbNewLine)
+        console.debugcon.AppendText("OS Platform:                " & My.Computer.Info.OSPlatform & vbNewLine)
         isOS64bit()
-        console.debuglbl.AppendText("OS Version:                 " & My.Computer.Info.OSVersion & vbNewLine)
-        console.debuglbl.AppendText("UI Culture:                 " & My.Computer.Info.InstalledUICulture.ToString & vbNewLine)
-        console.debuglbl.AppendText("Total Physical Memory:      " & My.Computer.Info.TotalPhysicalMemory & " bytes (" & Math.Round(My.Computer.Info.TotalPhysicalMemory / 1024 ^ 3, 1) & " GB)" & vbNewLine)
-        console.debuglbl.AppendText("Total Virtual Memory:       " & My.Computer.Info.TotalVirtualMemory & " bytes (" & Math.Round(My.Computer.Info.TotalVirtualMemory / 1024 ^ 3, 1) & " GB)" & vbNewLine & vbNewLine)
-        console.debuglbl.AppendText("Installer Version:          " & My.Application.Info.Version.ToString & vbNewLine)
-        console.debuglbl.AppendText("CommandLineArgs:           " & Params.ToString & vbNewLine & vbNewLine)
-        console.debuglbl.AppendText("Installed SHA1:             " & My.Settings.SHA1.ToString & vbNewLine)
-        console.debuglbl.AppendText("Serverfile SHA1:            " & filesizesha1.ToString & vbNewLine)
-        console.debuglbl.AppendText("Serverfile Size:            " & GetDownloadSize("https://www.gingolingoo.de/files/Symphonia.zip") & " bytes (" & Math.Round(GetDownloadSize("https://www.gingolingoo.de/files/Symphonia.zip") / 1024 ^ 2, 1) & " MB)" & vbNewLine & vbNewLine)
-
-        If Not Params.Contains("debug") Then
-            settings.TabControl1.TabPages.Remove(settings.TabControl1.TabPages(2))
-        End If
+        console.debugcon.AppendText("OS Version:                 " & My.Computer.Info.OSVersion & vbNewLine)
+        console.debugcon.AppendText("UI Culture:                 " & My.Computer.Info.InstalledUICulture.ToString & vbNewLine)
+        console.debugcon.AppendText("Total Physical Memory:      " & My.Computer.Info.TotalPhysicalMemory & " bytes (" & Math.Round(My.Computer.Info.TotalPhysicalMemory / 1024 ^ 3, 1) & " GB)" & vbNewLine)
+        console.debugcon.AppendText("Total Virtual Memory:       " & My.Computer.Info.TotalVirtualMemory & " bytes (" & Math.Round(My.Computer.Info.TotalVirtualMemory / 1024 ^ 3, 1) & " GB)" & vbNewLine & vbNewLine)
+        console.debugcon.AppendText("Installer Version:          " & My.Application.Info.Version.ToString & vbNewLine)
+        console.debugcon.AppendText("CommandLineArgs:           " & Params.ToString & vbNewLine & vbNewLine)
+        console.debugcon.AppendText("Installed SHA1:             " & My.Settings.SHA1.ToString & vbNewLine)
+        console.debugcon.AppendText("Serverfile SHA1:            " & filesizesha1.ToString & vbNewLine)
+        console.debugcon.AppendText("Serverfile Size:            " & GetDownloadSize("https://www.gingolingoo.de/files/Symphonia.zip") & " bytes (" & Math.Round(GetDownloadSize("https://www.gingolingoo.de/files/Symphonia.zip") / 1024 ^ 2, 1) & " MB)" & vbNewLine & vbNewLine)
 
         If My.Settings.SHA1 = filesizesha1.ToString Then
             playbtn.Text = "Spielen"
@@ -90,16 +121,16 @@ Public Class MainWindow
                     Application.Exit()
             End Select
         Next
+        My.Settings.Params = Params
     End Sub
 
     Private Sub playbtn_Click(sender As Object, e As EventArgs) Handles playbtn.Click
         Dim Response As String
 
         If playbtn.Text = "Spielen" Then
-            'Dim p As New Process()
-            playbtn.Text = "Schließen"
-            playbtn.PerformClick()
-            'startMinecraft()
+            'playbtn.Text = "Schließen"
+            'playbtn.PerformClick()
+            startMinecraft()
             'Process.Start("java -Xms512m -Xmx4G -Djava.library.path=natives/ -cp 'minecraft.jar;lwjgl.jar;lwjgl_util.jar' net.minecraft.client.Minecraft <username> <sessionID>")
 
         ElseIf playbtn.Text = "Schließen" Then
@@ -108,7 +139,7 @@ Public Class MainWindow
         ElseIf playbtn.Text = "Update" Then
             Try
                 If My.Settings.installpath = "" Then
-                    console.debuglbl.AppendText("InstallPath:   " & "none" & vbNewLine)
+                    console.debugcon.AppendText("InstallPath:   " & "none" & vbNewLine)
                     Response = MsgBox("Es wurde noch kein Installationspfad gesetzt. Soll der Standard Minecraftpfad verwendet werden?" & vbNewLine & vbNewLine & "HINWEIS: Es wird ausdrücklich empfohlen, ein eigenes Profil mit eigenem Ordner in Minecraft anzulegen.", vbYesNoCancel, "Installationspfad nicht gesetzt.")
                     If Response = vbYes Then
                         My.Settings.installpath = appData & "\.minecraft"
@@ -120,7 +151,7 @@ Public Class MainWindow
                         MsgBox("Kein Installationspfad festgelegt. Programm wird beendet.")
                         Application.Exit()
                     End If
-                    console.debuglbl.AppendText("New InstallPath: " & My.Settings.installpath & vbNewLine)
+                    console.debugcon.AppendText("New InstallPath: " & My.Settings.installpath & vbNewLine)
                 End If
                 If My.Settings.installpath = "" Then
                     MsgBox("Kein Installationspfad festgelegt. Programm wird beendet.")
@@ -131,13 +162,73 @@ Public Class MainWindow
 
             End Try
             My.Settings.Save()
-            console.debuglbl.AppendText("InstallPath: " & My.Settings.installpath & vbNewLine)
-            console.debuglbl.AppendText("Starting download..." & vbNewLine)
+            console.debugcon.AppendText("InstallPath: " & My.Settings.installpath & vbNewLine)
+            console.debugcon.AppendText("Starting download..." & vbNewLine)
             downloadModpack()
         Else
             MsgBox("Es ist ein Fehler aufgetreten. Starte den Installer bitte erneut.")
             Me.Close()
         End If
+    End Sub
+
+    Function startMinecraft()
+        Dim p As New Process
+        Dim appData As String = GetFolderPath(SpecialFolder.ApplicationData)
+        Dim Root As String = appData & "\.minecraft"
+        Dim JavaPath As String = My.Settings.JavaPath
+
+        p.StartInfo.FileName = JavaPath
+
+        MsgBox(
+            "-Xmx" + settings.Xmxtxt.Value.ToString +
+            "M -Xms" + settings.Xmstxt.Value.ToString +
+            "M -Dminecraft.client.jar=" + Root + "\versions\1.12.2\1.12.2.jar -Djava.library.path=" +
+            Root + "\versions\" + settings.SelectedGameVersion.Text + "\" + settings.SelectedGameVersion.Text + " -natives -cp " +
+            Root + "\libraries\net\minecraftforge\forge\" + settings.SelectedGameVersion.Text + "\" + settings.SelectedGameVersion.Text + ".jar " +
+            "net.minecraft.client.Minecraft" +
+            " --username=" + My.Settings.currentUser +
+            " --version " + settings.SelectedGameVersion.Text +
+            " --assetsDir " + Root + "\assets" +
+            " --gameDir " + My.Settings.installpath +
+            " --accessToken " + My.Settings.accessToken +
+            " --uuid " + My.Settings.userID +
+            " --userType mojang " + "--tweakClass net.minecraftforge.fml.common.launcher.FMLTweaker"
+            )
+
+        p.StartInfo.Arguments =
+            "-Xmx" + settings.Xmxtxt.Value.ToString +
+            "M -Xms" + settings.Xmstxt.Value.ToString +
+            "M -Dminecraft.client.jar=" + Root + "\versions\1.12.2\1.12.2.jar -Djava.library.path=" +
+            Root + "\versions\" + settings.SelectedGameVersion.Text + "\" + settings.SelectedGameVersion.Text + " -natives -cp " +
+            Root + "\libraries\net\minecraftforge\forge\" + settings.SelectedGameVersion.Text + "\" + settings.SelectedGameVersion.Text + ".jar " +
+            "net.minecraft.client.Minecraft" +
+            " --username=" + My.Settings.currentUser +
+            " --version " + settings.SelectedGameVersion.Text +
+            " --assetsDir " + Root + "\assets" +
+            " --gameDir " + My.Settings.installpath +
+            " --accessToken " + My.Settings.accessToken +
+            " --uuid " + My.Settings.userID +
+            " --userType mojang " + "--tweakClass net.minecraftforge.fml.common.launcher.FMLTweaker"
+
+
+        p.StartInfo.WorkingDirectory = Root
+        p.StartInfo.CreateNoWindow = False
+        p.StartInfo.UseShellExecute = False
+        p.EnableRaisingEvents = True
+        Application.DoEvents()
+        p.StartInfo.RedirectStandardError = True
+        p.StartInfo.RedirectStandardOutput = True
+        AddHandler p.ErrorDataReceived, AddressOf P_OutputDataReceived
+        AddHandler p.OutputDataReceived, AddressOf P_OutputDataReceived
+        p.Start()
+        Return True
+    End Function
+
+    Public Sub P_OutputDataReceived(ByVal sender As Object, ByVal e As DataReceivedEventArgs)
+        'If e.Data IsNot Nothing Then
+        'Invoke(Sub() My.Computer.FileSystem.WriteAllText(Application.StartupPath & "latest.log", e.Data & NewLine, False))
+        'My.Computer.FileSystem.WriteAllText(Application.StartupPath & "latest.log", e.Data & NewLine, False)
+        'End If
     End Sub
 
     Private Sub Wc_DownloadProgressChanged(ByVal sender As Object, ByVal e As System.Net.DownloadProgressChangedEventArgs) Handles Wc.DownloadProgressChanged
@@ -222,6 +313,38 @@ Public Class MainWindow
             'alles in Ordnung
         End If
     End Sub
+    Private Function GetJavaInstallationPath() As String
+        Dim environmentPath As String = Environment.GetEnvironmentVariable("JAVA_HOME")
+
+        If Not String.IsNullOrEmpty(environmentPath) Then
+            Return environmentPath
+        End If
+
+        Dim javaKey As String = "SOFTWARE\JavaSoft\JRE\"
+
+        If Not Environment.Is64BitOperatingSystem Then
+
+            Using rk As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(javaKey)
+                Dim currentVersion As String = rk.GetValue("CurrentVersion").ToString()
+
+                Using key As Microsoft.Win32.RegistryKey = rk.OpenSubKey(currentVersion)
+                    Return key.GetValue("JavaHome").ToString()
+                End Using
+            End Using
+        Else
+
+            Using view64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
+
+                Using clsid64 = view64.OpenSubKey(javaKey)
+                    Dim currentVersion As String = clsid64.GetValue("CurrentVersion").ToString()
+
+                    Using key As RegistryKey = clsid64.OpenSubKey(currentVersion)
+                        Return key.GetValue("JavaHome").ToString()
+                    End Using
+                End Using
+            End Using
+        End If
+    End Function
 
     Function downloadModpack()
         AddHandler Wc.DownloadProgressChanged, AddressOf Wc_DownloadProgressChanged
@@ -234,7 +357,7 @@ Public Class MainWindow
         'End If
         TargetPath = My.Settings.installpath & "\Symphonia.zip"
         'TargetPath = My.Settings.installpath & "\GSMPNM.zip"
-        console.debuglbl.AppendText("Downloading zipfile to " & TargetPath & vbNewLine)
+        console.debugcon.AppendText("Downloading zipfile To " & TargetPath & vbNewLine)
         Wc.DownloadFileAsync(New Uri("https://www.gingolingoo.de/files/Symphonia.zip"), TargetPath)
         'Wc.DownloadFileAsync(New Uri("https://www.gingolingoo.de/files/GSMPNM.zip"), TargetPath)
         playbtn.Image = Nothing
@@ -286,49 +409,49 @@ Public Class MainWindow
                     'keine Daten da zum Entpacken O.o Wie kann das passieren?!
                 Else
                     If Not Directory.Exists(My.Settings.installpath & "\mods\") Then
-                        console.debuglbl.AppendText("Folder 'mods' does not exist, moving on..." & vbNewLine)
+                        console.debugcon.AppendText("Folder 'mods' does not exist, moving on..." & vbNewLine)
                         'Ordner gibts nicht
                     Else
                         playbtn.Text = "Lösche Mods... "
-                        console.debuglbl.AppendText("Deleting Folder 'mods'..." & vbNewLine)
+                        console.debugcon.AppendText("Deleting Folder 'mods'..." & vbNewLine)
                         Directory.Delete(My.Settings.installpath & "\mods\", True)
                     End If
 
                     If Not Directory.Exists(My.Settings.installpath & "\config\") Then
 
-                        console.debuglbl.AppendText("Folder 'config' does not exist, moving on..." & vbNewLine)
+                        console.debugcon.AppendText("Folder 'config' does not exist, moving on..." & vbNewLine)
                         'Ordner gibts nicht
                     Else
                         playbtn.Text = "Lösche Configs... "
-                        console.debuglbl.AppendText("Deleting Folder 'config'..." & vbNewLine)
+                        console.debugcon.AppendText("Deleting Folder 'config'..." & vbNewLine)
                         Directory.Delete(My.Settings.installpath & "\config\", True)
                     End If
 
                     If Not Directory.Exists(My.Settings.installpath & "\resources\") Then
 
-                        console.debuglbl.AppendText("Folder 'resources' does not exist, moving on..." & vbNewLine)
+                        console.debugcon.AppendText("Folder 'resources' does not exist, moving on..." & vbNewLine)
                         'Ordner gibts nicht
                     Else
                         playbtn.Text = "Lösche Resourcen... "
-                        console.debuglbl.AppendText("Deleting Folder 'resources'..." & vbNewLine)
+                        console.debugcon.AppendText("Deleting Folder 'resources'..." & vbNewLine)
                         Directory.Delete(My.Settings.installpath & "\resources\", True)
                     End If
 
                     If Not File.Exists(My.Settings.installpath & "\options.txt") Then
-                        console.debuglbl.AppendText("File 'options.txt' does not exist, moving on..." & vbNewLine)
+                        console.debugcon.AppendText("File 'options.txt' does not exist, moving on..." & vbNewLine)
                         'Datei gibts nicht
                     Else
                         playbtn.Text = "Lösche options.txt... "
-                        console.debuglbl.AppendText("Deleting file 'options.txt'..." & vbNewLine)
+                        console.debugcon.AppendText("Deleting file 'options.txt'..." & vbNewLine)
                         My.Computer.FileSystem.DeleteFile(My.Settings.installpath & "\options.txt")
                     End If
 
                     If Not File.Exists(My.Settings.installpath & "\servers.dat") Then
-                        console.debuglbl.AppendText("File 'servers.dat' does not exist, moving on..." & vbNewLine)
+                        console.debugcon.AppendText("File 'servers.dat' does not exist, moving on..." & vbNewLine)
                         'Datei gibts nicht
                     Else
                         playbtn.Text = "Lösche servers.dat... "
-                        console.debuglbl.AppendText("Deleting file 'servers.dat'..." & vbNewLine)
+                        console.debugcon.AppendText("Deleting file 'servers.dat'..." & vbNewLine)
                         My.Computer.FileSystem.DeleteFile(My.Settings.installpath & "\servers.dat")
                     End If
 
@@ -339,21 +462,21 @@ Public Class MainWindow
                     playbtn.Image = Nothing
                     playbtn.Enabled = False
                     isInstalling = True
-                    console.debuglbl.AppendText("Extracting " & My.Settings.installpath & "\Symphonia.zip" & vbNewLine)
+                    console.debugcon.AppendText("Extracting " & My.Settings.installpath & "\Symphonia.zip" & vbNewLine)
                     ExtractZipFileToContainingFolder(My.Settings.installpath & "\Symphonia.zip")
                     'ExtractZipFileToContainingFolder(My.Settings.installpath & "\GSMPNM.zip")
                     extractedModsbefore = True
                 End If
                 'extractMusic()
-                console.debuglbl.AppendText("Setting SHA1 Hash " & filesizesha1 & " as installed version" & vbNewLine)
+                console.debugcon.AppendText("Setting SHA1 Hash " & filesizesha1 & " as installed version" & vbNewLine)
                 My.Settings.SHA1 = filesizesha1
-                console.debuglbl.AppendText("Finished downloading zipfile to " & TargetPath & vbNewLine)
+                console.debugcon.AppendText("Finished downloading zipfile to " & TargetPath & vbNewLine)
                 playbtn.Text = "Schließe ab... "
                 'MsgBox("Fertig! :)")
                 Me.Enabled = True
                 playbtn.Text = "Schließen"
             Catch exc As Exception
-                console.debuglbl.AppendText("Extraction failed: " & exc.ToString & vbNewLine)
+                console.debugcon.AppendText("Extraction failed: " & exc.ToString & vbNewLine)
                 MsgBox(exc.ToString)
             End Try
         End If
@@ -456,5 +579,39 @@ Public Class MainWindow
         My.Settings.currentUser = Nothing
         My.Settings.currentUser = Nothing
         My.Settings.resultJson = Nothing
+
+        My.Settings.Save()
+    End Sub
+
+    Private Sub BenutzerWechselnToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BenutzerWechselnToolStripMenuItem.Click
+        Dim Response As String
+        If isInstalling = True Then
+            Response = MsgBox("Wirklich abbrechen? Das Modpack muss dann erneut Heruntergeladen und entpackt werden.", vbYesNo, "Installation abbrechen?")
+            If Response = vbYes Then
+                Me.Hide()
+                LoginForm.Show()
+            ElseIf Response = vbNo Then
+                'Nicht abmelden, Fortsetzen
+            End If
+        Else
+            Me.Hide()
+            LoginForm.Show()
+        End If
+    End Sub
+
+    Private Sub BeendenToolStripMenuItem_Click_2(sender As Object, e As EventArgs) Handles BeendenToolStripMenuItem.Click
+        Dim Response As String
+        If isInstalling = True Then
+            Response = MsgBox("Wirklich abbrechen? Das Modpack muss dann erneut Heruntergeladen und entpackt werden.", vbYesNo, "Installation abbrechen?")
+            If Response = vbYes Then
+                Application.Exit()
+                Application.ExitThread()
+            ElseIf Response = vbNo Then
+                'Nicht beenden, Fortsetzen
+            End If
+        Else
+            Application.Exit()
+            Application.ExitThread()
+        End If
     End Sub
 End Class

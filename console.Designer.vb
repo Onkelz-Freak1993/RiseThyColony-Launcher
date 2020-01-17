@@ -23,30 +23,31 @@ Partial Class console
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(console))
-        Me.debuglbl = New System.Windows.Forms.RichTextBox()
+        Me.debugcon = New System.Windows.Forms.RichTextBox()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogSpeichernUnterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'debuglbl
+        'debugcon
         '
-        Me.debuglbl.BackColor = System.Drawing.Color.Black
-        Me.debuglbl.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.debuglbl.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.debuglbl.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.debuglbl.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.debuglbl.ForeColor = System.Drawing.Color.Gray
-        Me.debuglbl.Location = New System.Drawing.Point(0, 24)
-        Me.debuglbl.Margin = New System.Windows.Forms.Padding(6)
-        Me.debuglbl.Name = "debuglbl"
-        Me.debuglbl.ReadOnly = True
-        Me.debuglbl.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.debuglbl.Size = New System.Drawing.Size(904, 487)
-        Me.debuglbl.TabIndex = 1
-        Me.debuglbl.Text = ""
-        Me.debuglbl.ZoomFactor = 1.3!
+        Me.debugcon.BackColor = System.Drawing.Color.Black
+        Me.debugcon.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.debugcon.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.debugcon.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.debugcon.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.debugcon.ForeColor = System.Drawing.Color.Gray
+        Me.debugcon.Location = New System.Drawing.Point(0, 24)
+        Me.debugcon.Margin = New System.Windows.Forms.Padding(6)
+        Me.debugcon.Name = "debugcon"
+        Me.debugcon.ReadOnly = True
+        Me.debugcon.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
+        Me.debugcon.Size = New System.Drawing.Size(904, 487)
+        Me.debugcon.TabIndex = 1
+        Me.debugcon.Text = ""
+        Me.debugcon.ZoomFactor = 1.3!
         '
         'MenuStrip1
         '
@@ -79,7 +80,7 @@ Partial Class console
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(904, 511)
-        Me.Controls.Add(Me.debuglbl)
+        Me.Controls.Add(Me.debugcon)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "console"
@@ -91,8 +92,9 @@ Partial Class console
 
     End Sub
 
-    Friend WithEvents debuglbl As RichTextBox
+    Friend WithEvents debugcon As RichTextBox
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents LogSpeichernUnterToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SaveFileDialog1 As SaveFileDialog
 End Class

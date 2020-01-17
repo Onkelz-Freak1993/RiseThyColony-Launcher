@@ -161,6 +161,66 @@ Namespace My
                 Me("userID") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property usernamecrypt() As String
+            Get
+                Return CType(Me("usernamecrypt"),String)
+            End Get
+            Set
+                Me("usernamecrypt") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property passwordcrypt() As String
+            Get
+                Return CType(Me("passwordcrypt"),String)
+            End Get
+            Set
+                Me("passwordcrypt") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property Params() As String
+            Get
+                Return CType(Me("Params"),String)
+            End Get
+            Set
+                Me("Params") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property credentialssaved() As Boolean
+            Get
+                Return CType(Me("credentialssaved"),Boolean)
+            End Get
+            Set
+                Me("credentialssaved") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property seenwarningcredentials() As Boolean
+            Get
+                Return CType(Me("seenwarningcredentials"),Boolean)
+            End Get
+            Set
+                Me("seenwarningcredentials") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

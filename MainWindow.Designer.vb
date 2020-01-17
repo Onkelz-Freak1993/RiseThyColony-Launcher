@@ -25,7 +25,6 @@ Partial Class MainWindow
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainWindow))
         Me.playbtn = New System.Windows.Forms.Button()
-        Me.versionlbl = New System.Windows.Forms.Label()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.progress = New System.Windows.Forms.ProgressBar()
@@ -41,6 +40,9 @@ Partial Class MainWindow
         Me.PictureBox9 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.usernamelbl = New System.Windows.Forms.ToolStripMenuItem()
+        Me.versionlbl = New System.Windows.Forms.ToolStripMenuItem()
         Me.filenamelbl = New System.Windows.Forms.LinkLabel()
         Me.consolebtn = New System.Windows.Forms.Button()
         Me.trayicon = New System.Windows.Forms.NotifyIcon(Me.components)
@@ -51,7 +53,9 @@ Partial Class MainWindow
         Me.closetsmenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.repairbtn = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.usernamelbl = New System.Windows.Forms.Label()
+        Me.BenutzerWechselnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BeendenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,7 +66,7 @@ Partial Class MainWindow
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
-        Me.Panel4.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -82,17 +86,6 @@ Partial Class MainWindow
         Me.playbtn.TabIndex = 1
         Me.playbtn.Text = "Installieren"
         Me.playbtn.UseVisualStyleBackColor = False
-        '
-        'versionlbl
-        '
-        Me.versionlbl.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.versionlbl.BackColor = System.Drawing.Color.Transparent
-        Me.versionlbl.Location = New System.Drawing.Point(440, 14)
-        Me.versionlbl.Name = "versionlbl"
-        Me.versionlbl.Size = New System.Drawing.Size(198, 13)
-        Me.versionlbl.TabIndex = 3
-        Me.versionlbl.Text = "#.#.#.#"
-        Me.versionlbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LinkLabel1
         '
@@ -115,7 +108,6 @@ Partial Class MainWindow
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
         Me.Panel1.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.nether_brick
         Me.Panel1.Controls.Add(Me.LinkLabel1)
-        Me.Panel1.Controls.Add(Me.versionlbl)
         Me.Panel1.Location = New System.Drawing.Point(0, 334)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(641, 32)
@@ -239,6 +231,7 @@ Partial Class MainWindow
         Me.Panel2.Controls.Add(Me.PictureBox2)
         Me.Panel2.Controls.Add(Me.PictureBox6)
         Me.Panel2.Controls.Add(Me.PictureBox3)
+        Me.Panel2.Controls.Add(Me.MenuStrip1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
@@ -249,11 +242,36 @@ Partial Class MainWindow
         '
         Me.Panel4.BackgroundImage = CType(resources.GetObject("Panel4.BackgroundImage"), System.Drawing.Image)
         Me.Panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Panel4.Controls.Add(Me.usernamelbl)
-        Me.Panel4.Location = New System.Drawing.Point(11, 12)
+        Me.Panel4.Location = New System.Drawing.Point(11, 27)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(619, 223)
+        Me.Panel4.Size = New System.Drawing.Size(619, 208)
         Me.Panel4.TabIndex = 24
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.BackColor = System.Drawing.SystemColors.Control
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.usernamelbl, Me.versionlbl})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(641, 24)
+        Me.MenuStrip1.TabIndex = 25
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'usernamelbl
+        '
+        Me.usernamelbl.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BenutzerWechselnToolStripMenuItem, Me.ToolStripMenuItem1, Me.BeendenToolStripMenuItem})
+        Me.usernamelbl.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.usernamelbl.Name = "usernamelbl"
+        Me.usernamelbl.Size = New System.Drawing.Size(105, 20)
+        Me.usernamelbl.Text = "Eingeloggt als ..."
+        '
+        'versionlbl
+        '
+        Me.versionlbl.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.versionlbl.Enabled = False
+        Me.versionlbl.Name = "versionlbl"
+        Me.versionlbl.Size = New System.Drawing.Size(56, 20)
+        Me.versionlbl.Text = "#.#.#.#"
         '
         'filenamelbl
         '
@@ -355,14 +373,22 @@ Partial Class MainWindow
         Me.Button1.TabIndex = 34
         Me.Button1.UseVisualStyleBackColor = False
         '
-        'usernamelbl
+        'BenutzerWechselnToolStripMenuItem
         '
-        Me.usernamelbl.AutoSize = True
-        Me.usernamelbl.Location = New System.Drawing.Point(1, 0)
-        Me.usernamelbl.Name = "usernamelbl"
-        Me.usernamelbl.Size = New System.Drawing.Size(85, 13)
-        Me.usernamelbl.TabIndex = 0
-        Me.usernamelbl.Text = "Eingeloggt als ..."
+        Me.BenutzerWechselnToolStripMenuItem.Name = "BenutzerWechselnToolStripMenuItem"
+        Me.BenutzerWechselnToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BenutzerWechselnToolStripMenuItem.Text = "Benutzer wechseln"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(177, 6)
+        '
+        'BeendenToolStripMenuItem
+        '
+        Me.BeendenToolStripMenuItem.Name = "BeendenToolStripMenuItem"
+        Me.BeendenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BeendenToolStripMenuItem.Text = "Beenden"
         '
         'MainWindow
         '
@@ -402,14 +428,14 @@ Partial Class MainWindow
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
-        Me.Panel4.ResumeLayout(False)
-        Me.Panel4.PerformLayout()
+        Me.Panel2.PerformLayout()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents playbtn As Button
-    Friend WithEvents versionlbl As Label
     Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents progress As ProgressBar
@@ -435,5 +461,10 @@ Partial Class MainWindow
     Friend WithEvents dividertsmenu As ToolStripSeparator
     Friend WithEvents repairbtn As Button
     Friend WithEvents Button1 As Button
-    Friend WithEvents usernamelbl As Label
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents usernamelbl As ToolStripMenuItem
+    Friend WithEvents versionlbl As ToolStripMenuItem
+    Friend WithEvents BenutzerWechselnToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
+    Friend WithEvents BeendenToolStripMenuItem As ToolStripMenuItem
 End Class

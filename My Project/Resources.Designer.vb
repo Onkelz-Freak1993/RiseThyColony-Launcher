@@ -63,16 +63,6 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property _2019_11_06_14_08_39() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("2019-11-06_14.08.39", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        '''</summary>
         Friend ReadOnly Property _2019_12_31_14_57_20() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("2019-12-31_14.57.20", resourceCulture)

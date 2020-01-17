@@ -29,22 +29,39 @@ Partial Class settings
         Me.installpathtxt = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.JavaOptions = New System.Windows.Forms.TabPage()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.SelectedGameVersion = New System.Windows.Forms.ComboBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Xmxtxt = New System.Windows.Forms.NumericUpDown()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Xmstxt = New System.Windows.Forms.NumericUpDown()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.javapathbtn = New System.Windows.Forms.Button()
+        Me.javapathtxt = New System.Windows.Forms.TextBox()
+        Me.gameversionlbl = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.debugtab = New System.Windows.Forms.TabPage()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.attxt = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.cttxt = New System.Windows.Forms.TextBox()
         Me.jsonresult = New System.Windows.Forms.Button()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.usernametxt = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.useridtxt = New System.Windows.Forms.TextBox()
+        Me.usernametxt = New System.Windows.Forms.TextBox()
+        Me.cttxt = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.attxt = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.TabControl1.SuspendLayout()
         Me.AppOptions.SuspendLayout()
         Me.JavaOptions.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        CType(Me.Xmxtxt, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Xmstxt, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.debugtab.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -107,8 +124,11 @@ Partial Class settings
         '
         'JavaOptions
         '
-        Me.JavaOptions.Controls.Add(Me.Button1)
-        Me.JavaOptions.Controls.Add(Me.TextBox1)
+        Me.JavaOptions.Controls.Add(Me.SelectedGameVersion)
+        Me.JavaOptions.Controls.Add(Me.GroupBox1)
+        Me.JavaOptions.Controls.Add(Me.javapathbtn)
+        Me.JavaOptions.Controls.Add(Me.javapathtxt)
+        Me.JavaOptions.Controls.Add(Me.gameversionlbl)
         Me.JavaOptions.Controls.Add(Me.Label2)
         Me.JavaOptions.Location = New System.Drawing.Point(4, 22)
         Me.JavaOptions.Name = "JavaOptions"
@@ -118,6 +138,146 @@ Partial Class settings
         Me.JavaOptions.Text = "Java-Einstellungen"
         Me.JavaOptions.UseVisualStyleBackColor = True
         '
+        'SelectedGameVersion
+        '
+        Me.SelectedGameVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.SelectedGameVersion.FormattingEnabled = True
+        Me.SelectedGameVersion.Location = New System.Drawing.Point(81, 37)
+        Me.SelectedGameVersion.Name = "SelectedGameVersion"
+        Me.SelectedGameVersion.Size = New System.Drawing.Size(295, 21)
+        Me.SelectedGameVersion.TabIndex = 20
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.GroupBox2)
+        Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Controls.Add(Me.Label11)
+        Me.GroupBox1.Location = New System.Drawing.Point(6, 64)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(472, 165)
+        Me.GroupBox1.TabIndex = 19
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Java-Parameter"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.Xmxtxt)
+        Me.GroupBox2.Controls.Add(Me.Label8)
+        Me.GroupBox2.Controls.Add(Me.Xmstxt)
+        Me.GroupBox2.Controls.Add(Me.Label7)
+        Me.GroupBox2.Controls.Add(Me.Label9)
+        Me.GroupBox2.Controls.Add(Me.Label10)
+        Me.GroupBox2.Location = New System.Drawing.Point(9, 19)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(184, 76)
+        Me.GroupBox2.TabIndex = 22
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Zugewiesener Speicher"
+        '
+        'Xmxtxt
+        '
+        Me.Xmxtxt.Location = New System.Drawing.Point(91, 45)
+        Me.Xmxtxt.Maximum = New Decimal(New Integer() {1316134911, 2328, 0, 0})
+        Me.Xmxtxt.Name = "Xmxtxt"
+        Me.Xmxtxt.Size = New System.Drawing.Size(55, 20)
+        Me.Xmxtxt.TabIndex = 19
+        Me.Xmxtxt.Value = New Decimal(New Integer() {4096, 0, 0, 0})
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(152, 47)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(23, 13)
+        Me.Label8.TabIndex = 17
+        Me.Label8.Text = "MB"
+        '
+        'Xmstxt
+        '
+        Me.Xmstxt.Location = New System.Drawing.Point(91, 19)
+        Me.Xmstxt.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
+        Me.Xmstxt.Minimum = New Decimal(New Integer() {512, 0, 0, 0})
+        Me.Xmstxt.Name = "Xmstxt"
+        Me.Xmstxt.Size = New System.Drawing.Size(55, 20)
+        Me.Xmstxt.TabIndex = 20
+        Me.Xmstxt.Value = New Decimal(New Integer() {512, 0, 0, 0})
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(6, 47)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(82, 13)
+        Me.Label7.TabIndex = 18
+        Me.Label7.Text = "Arbeitsspeicher:"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(6, 21)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(68, 13)
+        Me.Label9.TabIndex = 18
+        Me.Label9.Text = "Heap-Größe:"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(152, 21)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(23, 13)
+        Me.Label10.TabIndex = 17
+        Me.Label10.Text = "MB"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.TextBox1.Location = New System.Drawing.Point(113, 139)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(353, 20)
+        Me.TextBox1.TabIndex = 21
+        '
+        'Label11
+        '
+        Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(6, 142)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(101, 13)
+        Me.Label11.TabIndex = 15
+        Me.Label11.Text = "Weitere Argumente:"
+        '
+        'javapathbtn
+        '
+        Me.javapathbtn.BackColor = System.Drawing.Color.Black
+        Me.javapathbtn.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.planks_spruce
+        Me.javapathbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.javapathbtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.javapathbtn.ForeColor = System.Drawing.Color.White
+        Me.javapathbtn.Location = New System.Drawing.Point(382, 6)
+        Me.javapathbtn.Name = "javapathbtn"
+        Me.javapathbtn.Size = New System.Drawing.Size(96, 23)
+        Me.javapathbtn.TabIndex = 14
+        Me.javapathbtn.Text = "Durchsuchen..."
+        Me.javapathbtn.UseVisualStyleBackColor = False
+        '
+        'javapathtxt
+        '
+        Me.javapathtxt.Location = New System.Drawing.Point(81, 8)
+        Me.javapathtxt.Name = "javapathtxt"
+        Me.javapathtxt.ReadOnly = True
+        Me.javapathtxt.Size = New System.Drawing.Size(295, 20)
+        Me.javapathtxt.TabIndex = 1
+        '
+        'gameversionlbl
+        '
+        Me.gameversionlbl.AutoSize = True
+        Me.gameversionlbl.Location = New System.Drawing.Point(8, 40)
+        Me.gameversionlbl.Name = "gameversionlbl"
+        Me.gameversionlbl.Size = New System.Drawing.Size(67, 13)
+        Me.gameversionlbl.TabIndex = 0
+        Me.gameversionlbl.Text = "Spielversion:"
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -126,27 +286,6 @@ Partial Class settings
         Me.Label2.Size = New System.Drawing.Size(58, 13)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Java-Pfad:"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(72, 8)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(304, 20)
-        Me.TextBox1.TabIndex = 1
-        '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.Black
-        Me.Button1.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.planks_spruce
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(382, 6)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(96, 23)
-        Me.Button1.TabIndex = 14
-        Me.Button1.Text = "Durchsuchen..."
-        Me.Button1.UseVisualStyleBackColor = False
         '
         'debugtab
         '
@@ -167,40 +306,6 @@ Partial Class settings
         Me.debugtab.Text = "Debug"
         Me.debugtab.UseVisualStyleBackColor = True
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(8, 9)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(76, 13)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Access Token"
-        '
-        'attxt
-        '
-        Me.attxt.Location = New System.Drawing.Point(90, 6)
-        Me.attxt.Name = "attxt"
-        Me.attxt.ReadOnly = True
-        Me.attxt.Size = New System.Drawing.Size(388, 20)
-        Me.attxt.TabIndex = 1
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(8, 35)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(67, 13)
-        Me.Label4.TabIndex = 0
-        Me.Label4.Text = "Client Token"
-        '
-        'cttxt
-        '
-        Me.cttxt.Location = New System.Drawing.Point(90, 32)
-        Me.cttxt.Name = "cttxt"
-        Me.cttxt.ReadOnly = True
-        Me.cttxt.Size = New System.Drawing.Size(388, 20)
-        Me.cttxt.TabIndex = 1
-        '
         'jsonresult
         '
         Me.jsonresult.Location = New System.Drawing.Point(8, 201)
@@ -210,14 +315,13 @@ Partial Class settings
         Me.jsonresult.Text = "Mojang-Response anzeigen"
         Me.jsonresult.UseVisualStyleBackColor = True
         '
-        'Label5
+        'useridtxt
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(8, 61)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(55, 13)
-        Me.Label5.TabIndex = 0
-        Me.Label5.Text = "Username"
+        Me.useridtxt.Location = New System.Drawing.Point(90, 84)
+        Me.useridtxt.Name = "useridtxt"
+        Me.useridtxt.ReadOnly = True
+        Me.useridtxt.Size = New System.Drawing.Size(388, 20)
+        Me.useridtxt.TabIndex = 1
         '
         'usernametxt
         '
@@ -226,6 +330,14 @@ Partial Class settings
         Me.usernametxt.ReadOnly = True
         Me.usernametxt.Size = New System.Drawing.Size(388, 20)
         Me.usernametxt.TabIndex = 1
+        '
+        'cttxt
+        '
+        Me.cttxt.Location = New System.Drawing.Point(90, 32)
+        Me.cttxt.Name = "cttxt"
+        Me.cttxt.ReadOnly = True
+        Me.cttxt.Size = New System.Drawing.Size(388, 20)
+        Me.cttxt.TabIndex = 1
         '
         'Label6
         '
@@ -236,13 +348,44 @@ Partial Class settings
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "UserID"
         '
-        'useridtxt
+        'attxt
         '
-        Me.useridtxt.Location = New System.Drawing.Point(90, 84)
-        Me.useridtxt.Name = "useridtxt"
-        Me.useridtxt.ReadOnly = True
-        Me.useridtxt.Size = New System.Drawing.Size(388, 20)
-        Me.useridtxt.TabIndex = 1
+        Me.attxt.Location = New System.Drawing.Point(90, 6)
+        Me.attxt.Name = "attxt"
+        Me.attxt.ReadOnly = True
+        Me.attxt.Size = New System.Drawing.Size(388, 20)
+        Me.attxt.TabIndex = 1
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(8, 61)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(55, 13)
+        Me.Label5.TabIndex = 0
+        Me.Label5.Text = "Username"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(8, 35)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(67, 13)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "Client Token"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(8, 9)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(76, 13)
+        Me.Label3.TabIndex = 0
+        Me.Label3.Text = "Access Token"
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
         'settings
         '
@@ -264,6 +407,12 @@ Partial Class settings
         Me.AppOptions.PerformLayout()
         Me.JavaOptions.ResumeLayout(False)
         Me.JavaOptions.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        CType(Me.Xmxtxt, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Xmstxt, System.ComponentModel.ISupportInitialize).EndInit()
         Me.debugtab.ResumeLayout(False)
         Me.debugtab.PerformLayout()
         Me.ResumeLayout(False)
@@ -276,8 +425,8 @@ Partial Class settings
     Friend WithEvents installpathbtn As Button
     Friend WithEvents installpathtxt As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents javapathbtn As Button
+    Friend WithEvents javapathtxt As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents debugtab As TabPage
     Friend WithEvents cttxt As TextBox
@@ -289,4 +438,17 @@ Partial Class settings
     Friend WithEvents Label5 As Label
     Friend WithEvents useridtxt As TextBox
     Friend WithEvents Label6 As Label
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents Label8 As Label
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Xmstxt As NumericUpDown
+    Friend WithEvents Xmxtxt As NumericUpDown
+    Friend WithEvents SelectedGameVersion As ComboBox
+    Friend WithEvents gameversionlbl As Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents Label7 As Label
 End Class

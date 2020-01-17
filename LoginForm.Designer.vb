@@ -30,6 +30,7 @@ Partial Class LoginForm
         Me.pwdtxt = New System.Windows.Forms.MaskedTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.saveCedentialschkbox = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'loginbtn
@@ -40,7 +41,7 @@ Partial Class LoginForm
         Me.loginbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.loginbtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.loginbtn.ForeColor = System.Drawing.Color.White
-        Me.loginbtn.Location = New System.Drawing.Point(84, 111)
+        Me.loginbtn.Location = New System.Drawing.Point(84, 139)
         Me.loginbtn.Name = "loginbtn"
         Me.loginbtn.Size = New System.Drawing.Size(105, 23)
         Me.loginbtn.TabIndex = 35
@@ -103,8 +104,9 @@ Partial Class LoginForm
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(360, 45)
         Me.Label3.TabIndex = 40
-        Me.Label3.Text = "Bitte logge dich in dein Mojang-Konto ein. Es wird benötigt, um Minecraft starten" &
-    " zu können. Du kannst auch Offline spielen, wenn du derzeit kein Internet hast."
+        Me.Label3.Text = "Bitte logge dich in dein Mojang-Konto ein. Es wird benötigt, um Minecraft im Mult" &
+    "iplayer spielen zu können. Du kannst auch Offline spielen, wenn du derzeit kein " &
+    "Internet hast."
         '
         'Button2
         '
@@ -114,19 +116,32 @@ Partial Class LoginForm
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.White
-        Me.Button2.Location = New System.Drawing.Point(195, 111)
+        Me.Button2.Location = New System.Drawing.Point(195, 139)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(105, 23)
         Me.Button2.TabIndex = 41
         Me.Button2.Text = "Offline spielen"
         Me.Button2.UseVisualStyleBackColor = False
         '
+        'saveCedentialschkbox
+        '
+        Me.saveCedentialschkbox.AutoSize = True
+        Me.saveCedentialschkbox.BackColor = System.Drawing.Color.Transparent
+        Me.saveCedentialschkbox.ForeColor = System.Drawing.Color.White
+        Me.saveCedentialschkbox.Location = New System.Drawing.Point(96, 109)
+        Me.saveCedentialschkbox.Name = "saveCedentialschkbox"
+        Me.saveCedentialschkbox.Size = New System.Drawing.Size(198, 17)
+        Me.saveCedentialschkbox.TabIndex = 42
+        Me.saveCedentialschkbox.Text = "Daten speichern (NICHT empfohlen)"
+        Me.saveCedentialschkbox.UseVisualStyleBackColor = False
+        '
         'LoginForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Symphonia_Installer.My.Resources.Resources.bgpanel
-        Me.ClientSize = New System.Drawing.Size(384, 146)
+        Me.ClientSize = New System.Drawing.Size(384, 174)
+        Me.Controls.Add(Me.saveCedentialschkbox)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.pwdtxt)
@@ -153,4 +168,5 @@ Partial Class LoginForm
     Friend WithEvents pwdtxt As MaskedTextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Button2 As Button
+    Friend WithEvents saveCedentialschkbox As CheckBox
 End Class
