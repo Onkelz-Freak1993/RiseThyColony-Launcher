@@ -14,6 +14,7 @@ Public Class settings
         usernametxt.Text = My.Settings.currentUser
         useridtxt.Text = My.Settings.userID
         javapathtxt.Text = My.Settings.JavaPath
+        SelectedGameVersion.Items.Clear()
 
         For Each Dir As String In Directory.GetDirectories(appData & "\.minecraft\versions")
             Dim dirInfo As New System.IO.DirectoryInfo(Dir)

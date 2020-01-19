@@ -169,14 +169,14 @@ Partial Class settings
         Me.GroupBox2.Controls.Add(Me.Label10)
         Me.GroupBox2.Location = New System.Drawing.Point(9, 19)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(184, 76)
+        Me.GroupBox2.Size = New System.Drawing.Size(184, 72)
         Me.GroupBox2.TabIndex = 22
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Zugewiesener Speicher"
         '
         'Xmxtxt
         '
-        Me.Xmxtxt.Location = New System.Drawing.Point(91, 45)
+        Me.Xmxtxt.Location = New System.Drawing.Point(91, 19)
         Me.Xmxtxt.Maximum = New Decimal(New Integer() {1316134911, 2328, 0, 0})
         Me.Xmxtxt.Name = "Xmxtxt"
         Me.Xmxtxt.Size = New System.Drawing.Size(55, 20)
@@ -194,7 +194,7 @@ Partial Class settings
         '
         'Xmstxt
         '
-        Me.Xmstxt.Location = New System.Drawing.Point(91, 19)
+        Me.Xmstxt.Location = New System.Drawing.Point(91, 45)
         Me.Xmstxt.Maximum = New Decimal(New Integer() {2048, 0, 0, 0})
         Me.Xmstxt.Minimum = New Decimal(New Integer() {512, 0, 0, 0})
         Me.Xmstxt.Name = "Xmstxt"
@@ -205,7 +205,7 @@ Partial Class settings
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(6, 47)
+        Me.Label7.Location = New System.Drawing.Point(6, 21)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(82, 13)
         Me.Label7.TabIndex = 18
@@ -214,7 +214,7 @@ Partial Class settings
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(6, 21)
+        Me.Label9.Location = New System.Drawing.Point(6, 47)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(68, 13)
         Me.Label9.TabIndex = 18
